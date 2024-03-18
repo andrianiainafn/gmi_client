@@ -1,6 +1,7 @@
 "use client"
 import React from 'react';
 import Link from "next/link";
+import SwitchTheme from "@/app/_common/components/switch_theme";
 
 
 
@@ -30,11 +31,14 @@ const NavBar = () => {
                             Log In
                     </button>
                 </Link>
-                <Link href="">
+                <Link href="/api/auth/signin" >
                     <button className="px-8 h-10  rounded-md bg-teal-500 text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-teal-500">
                             Sign up
                     </button>
                 </Link>
+                <div>
+                    <SwitchTheme/>
+                </div>
             </div>
         </div>
     );
