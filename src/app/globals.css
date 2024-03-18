@@ -72,6 +72,6 @@
   }
   body {
     @apply bg-background text-foreground;
-    @apply dark:bg-[#222] bg-white
+    @apply dark:bg-[#000] dark:bg-opacity-20 bg-white
   }
 }
