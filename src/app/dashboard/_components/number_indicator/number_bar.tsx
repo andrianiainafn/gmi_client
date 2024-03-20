@@ -23,7 +23,7 @@ export const BarListHero = ()=>{
     }, [isSuccess]);
     return (
         <>
-            <BarList data={dataRequest} color="teal-500" className="w-[40%]" />
+            <BarList data={dataRequest} color="teal-500" className="w-full" />
         </>
     )
 }
