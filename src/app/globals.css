@@ -74,4 +74,7 @@
     @apply bg-background text-foreground;
     @apply dark:bg-[#000] dark:bg-opacity-20 bg-white
   }
+  .link-nav{
+    @apply text-opacity-100 hover:text-teal-500 z-20
+  }
 }
