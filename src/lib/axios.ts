@@ -11,7 +11,6 @@ class HttpClient {
         };
         axiosInstance.interceptors.request.use((config) => {
             const accessToken = getAccessToken();
-            console.log()
             if (accessToken) {
                 config.headers.Authorization = `Bearer ${accessToken}`;
             }
