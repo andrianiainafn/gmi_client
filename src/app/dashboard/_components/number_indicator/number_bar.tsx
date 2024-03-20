@@ -1,14 +1,29 @@
 "use client"
 import { BarList } from '@tremor/react';
+import {useFetchRequestStat} from "@/app/dashboard/_hooks/dashboard_hook";
+import {useEffect, useState} from "react";
 
-const datahero = [
-    { name: '/approved', value: 26 },
-    { name: '/pending', value: 11 },
-    { name: '/rejected', value: 6 },
-];
+interface IDataRequest{
+    name:string,
+    value:number
+}
 
-export const BarListHero = () => (
-    <>
-        <BarList data={datahero} color="teal-500" className="w-[40%]" />
-    </>
-);
+export const BarListHero = ()=>{
+    const {data,isSuccess,isLoading} = useFetchRequestStat()
+    const [dataRequest,setDataRequest] = useState<IDataRequest[]>([])
+    useEffect(() => {
+        if (isSuccess) {
+            setDataRequest(prevState => [
+                ...prevState,
+                { name: '/approved', value: data.data.approved },
+                { name: '/pending', value:data.data.pending },
+                { name: '/rejected', value: data.data.rejected },
+            ]);
+        }
+    }, [isSuccess]);
+    return (
+        <>
+            <BarList data={dataRequest} color="teal-500" className="w-[40%]" />
+        </>
+    )
+}
