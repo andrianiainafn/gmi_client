@@ -11,8 +11,8 @@ const MaterialStatisticItem = (props:Props) => {
     const {total,label,number}=props
     const percent = (number*100)/total
     return (
-        <div className="space-y-3">
-            <Card className="mx-auto max-w-sm">
+        <div className="space-y-3 w-[33%]">
+            <Card className="mx-auto max-w-sm h-[16vh]">
                 <div className="flex justify-start space-x-5 items-center">
                     <ProgressCircle value={percent} color="teal-500" size="md">
                         <span className="text-xs font-medium text-slate-700 dark:text-white">{percent}%</span>

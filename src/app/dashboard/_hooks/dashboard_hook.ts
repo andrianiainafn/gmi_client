@@ -14,3 +14,10 @@ export const useFetchMaterialStat =()=>{
         queryFn:()=> dashboardService.getMaterialStat()
     })
 }
+
+export const useFetchRecentMovement =()=>{
+    return useQuery({
+        queryKey:['movement','recent'],
+        queryFn:()=> dashboardService.getRecentMovement()
+    })
+}

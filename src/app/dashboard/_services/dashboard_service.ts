@@ -9,5 +9,8 @@ class DashboardService{
     public getRequestStat(){
         return httpClient.get(DASHBOARD_ENDPOINTS.REQUEST_STAT)
     }
+    public getRecentMovement(){
+        return httpClient.get(DASHBOARD_ENDPOINTS.RECENT_MOVEMENT)
+    }
 }
 export const dashboardService = new DashboardService()

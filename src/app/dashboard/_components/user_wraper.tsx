@@ -3,8 +3,12 @@ import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {useSession} from "next-auth/react";
 
+interface Props{
+    profileUrl:string,
+    firstname:String
+}
 
-const UserWrapper = () => {
+const UserWrapper = (props:Props) => {
     const session = useSession()
     return (
         <div className="flex items-center space-x-2">

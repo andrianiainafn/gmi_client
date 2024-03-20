@@ -18,7 +18,7 @@ const DashboardNavBar = () => {
             <div className="flex space-x-4 items-center">
                 <Bell className="hover:text-teal-500 cursor-pointer" />
                 <Settings className="hover:text-teal-500 cursor-pointer"/>
-                <UserWrapper/>
+                <UserWrapper firstname="" profileUrl=""/>
             </div>
         </div>
     );
