@@ -8,7 +8,7 @@ export  const useCreateMaterial= ()=>{
     return useMutation(
         {
             mutationKey:['material'],
-            mutationFn: (material:IMaterialCreate)=> exampleService.createExample(material),
+            mutationFn: (material:IMaterialCreate)=> materialService.createMaterial(material),
             onSuccess: async ()=>{
                 await queryClient.resetQueries(['example'])
                 await queryClient.invalidateQueries(['example'])
@@ -40,7 +40,7 @@ export const useFetchAllStatus =()=>{
 export const useUpdateMaterial=(updateId:string)=>{
     const queryClient = useQueryClient()
     return useMutation({
-        mutationFn: (material: IMaterialCreate ) => exampleService.updateExample(material,updateId),
+        mutationFn: (material: IMaterialCreate ) => materialService.updateMaterial(material,updateId),
         onSuccess:async ()=>{
             await queryClient.invalidateQueries(['example'])
             await queryClient.resetQueries(['example'])
