@@ -87,7 +87,6 @@ const config = {
         dark: '#232A3C',
         medium: '#293245',
         border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -176,7 +175,6 @@ const config = {
   ],
   plugins: [
     require('@headlessui/tailwindcss'),
-    require('@tailwindcss/forms'),
     require("tailwindcss-animate"),
     require('@headlessui/tailwindcss'),
     addVariablesForColors,
