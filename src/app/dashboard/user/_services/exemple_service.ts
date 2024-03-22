@@ -1,6 +1,7 @@
 import {httpClient} from "@/lib/axios";
-import {IExampleDto} from "@/app/feat-exemple/_services/definition";
+
 import {EXAMPLE_ENDPOINTS} from "@/app/feat-exemple/_services/endpoint";
+import {IExampleDto} from "@/app/dashboard/user/_services/definition";
 
 class ExampleService{
     public createExample(exampleToCreate: IExampleDto){
