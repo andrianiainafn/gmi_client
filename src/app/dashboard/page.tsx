@@ -5,7 +5,7 @@ import MovementContainer from "@/app/dashboard/_components/movement/movement_con
 
 const Page = () => {
     return (
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-6">
             <div className="flex flex-col space-y-2">
                 <h3 className="font-semibold">Materials stats resume :</h3>
                 <MaterialStatisticContainer/>
