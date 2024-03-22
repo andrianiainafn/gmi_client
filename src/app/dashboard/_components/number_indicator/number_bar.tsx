@@ -14,7 +14,6 @@ export const BarListHero = ()=>{
     useEffect(() => {
         if (isSuccess) {
             setDataRequest(prevState => [
-                ...prevState,
                 { name: '/approved', value: data.data.approved },
                 { name: '/pending', value:data.data.pending },
                 { name: '/rejected', value: data.data.rejected },

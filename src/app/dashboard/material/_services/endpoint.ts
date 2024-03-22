@@ -1,8 +1,7 @@
-export enum EXAMPLE_ENDPOINTS{
-    CREATE = "/example",
-    GET_ALL="/example?page=number_page?size=size_number",
-    GET="/example/:id",
+export enum MATERIAL_ENDPOINTS{
+    CREATE = "/material",
+    GET_ALL="/material",
+    GET_STATUS="/status",
     UPDATE="/example/:id",
     DELETE="/example/:id",
-    GET_ALL_TECH= "/technology?q=query"
 }
