@@ -14,7 +14,7 @@ class MaterialService{
         return httpClient.get(MATERIAL_ENDPOINTS.GET_STATUS)
     }
     public getAllMateriel(status:string,page:number,size:number){
-        return httpClient.get(`${MATERIAL_ENDPOINTS.GET_ALL}`)
+        return httpClient.get(`${MATERIAL_ENDPOINTS.GET_ALL}?status=${status}`)
     }
     public updateExample(exampleToUpdate: IExampleDto,id:string){
         return httpClient.put(EXAMPLE_ENDPOINTS.UPDATE.replace("id",id),exampleToUpdate)
