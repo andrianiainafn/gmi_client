@@ -8,9 +8,9 @@ interface Props{
 }
 const TabItem = (props:Props) => {
     const {filter,statusName}=props
-    const {} = useFetchAllMaterial(statusName,0,20)
+    const {refetch} = useFetchAllMaterial(statusName,0,20)
     return (
-        <Link href={`/dashboard/material?filter=${statusName}`}
+        <Link href={`/dashboard/material?filter=${statusName}`} onClick={()=>refetch()}
                className={`${filter === `${statusName}` ? 'text-black bg-white px-2 py-1 rounded-lg cursor-pointer' : "text-gray-500 cursor-pointer"} `} >
             <p >
                 {statusName}
