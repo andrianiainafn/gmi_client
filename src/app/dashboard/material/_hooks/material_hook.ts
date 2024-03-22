@@ -23,10 +23,10 @@ export const useFetchMaterialById = (materialId:string) =>{
     })
 }
 
-export const useFetchAllMaterial =()=>{
+export const useFetchAllMaterial =(status:string,page:number,size:number)=>{
     return useQuery({
         queryKey:['materials'],
-        queryFn:()=> materialService.getAllMateriel()
+        queryFn:()=> materialService.getAllMateriel(status,page,size)
     })
 }
 
