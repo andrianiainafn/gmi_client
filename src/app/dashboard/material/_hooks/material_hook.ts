@@ -1,13 +1,14 @@
 import {useMutation, useQuery, useQueryClient} from "react-query";
-import {IExampleDto} from "@/app/feat-exemple/_services/definition";
 import {exampleService} from "@/app/feat-exemple/_services/exemple_service";
+import {IMaterialCreate} from "@/app/dashboard/material/_services/definition";
+import {materialService} from "@/app/dashboard/material/_services/materail_serivce";
 
-export  const useCreateExample= ()=>{
+export  const useCreateMaterial= ()=>{
     const queryClient = useQueryClient()
     return useMutation(
         {
-            mutationKey:['example'],
-            mutationFn: (exampleToCreate:IExampleDto)=> exampleService.createExample(exampleToCreate),
+            mutationKey:['material'],
+            mutationFn: (material:IMaterialCreate)=> exampleService.createExample(material),
             onSuccess: async ()=>{
                 await queryClient.resetQueries(['example'])
                 await queryClient.invalidateQueries(['example'])
@@ -15,23 +16,31 @@ export  const useCreateExample= ()=>{
         }
     )
 }
-export const useFetchExampleById = (exampleId:string) =>{
+export const useFetchMaterialById = (materialId:string) =>{
     return useQuery({
-        queryKey:['example'],
-        queryFn:()=> exampleService.getExampleByExampleId(exampleId)
+        queryKey:['material',materialId],
+        queryFn:()=> exampleService.getExampleByExampleId(materialId)
     })
 }
 
-export const useFetchAllExample =()=>{
+export const useFetchAllMaterial =(status:string,page:number,size:number)=>{
     return useQuery({
-        queryKey:['example'],
-        queryFn:()=> exampleService.getAllExample()
+        queryKey:['materials'],
+        queryFn:()=> materialService.getAllMateriel(status,page,size)
     })
 }
-export const useUpdateExample=(updateId:string)=>{
+
+export const useFetchAllStatus =()=>{
+    return useQuery({
+        queryKey:['statuses'],
+        queryFn:()=> materialService.getAllStatus()
+    })
+}
+
+export const useUpdateMaterial=(updateId:string)=>{
     const queryClient = useQueryClient()
     return useMutation({
-        mutationFn: (example: IExampleDto ) => exampleService.updateExample(example,updateId),
+        mutationFn: (material: IMaterialCreate ) => exampleService.updateExample(material,updateId),
         onSuccess:async ()=>{
             await queryClient.invalidateQueries(['example'])
             await queryClient.resetQueries(['example'])

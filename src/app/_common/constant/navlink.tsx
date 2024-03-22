@@ -16,7 +16,7 @@ export const links:ILink[] = [
     {
         label: "Materials",
         icon: <BrickWall size={24} />,
-        href:"/dashboard/material"
+        href:"/dashboard/material?filter=All"
     },
     {
         label: "Departments",

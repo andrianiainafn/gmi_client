@@ -1,6 +1,6 @@
 import {useMutation, useQuery, useQueryClient} from "react-query";
-import {IExampleDto} from "@/app/feat-exemple/_services/definition";
 import {exampleService} from "@/app/feat-exemple/_services/exemple_service";
+import {IExampleDto} from "@/app/dashboard/user/_services/definition";
 
 export  const useCreateExample= ()=>{
     const queryClient = useQueryClient()
@@ -15,31 +15,45 @@ export  const useCreateExample= ()=>{
         }
     )
 }
-export const useFetchExampleById = (exampleId:string) =>{
+export const useFetchNotificationById = (exampleId:string) =>{
     return useQuery({
         queryKey:['example'],
         queryFn:()=> exampleService.getExampleByExampleId(exampleId)
     })
 }
 
-export const useFetchAllExample =()=>{
+export const useFetchAllReportNotification =()=>{
     return useQuery({
-        queryKey:['example'],
+        queryKey:['example','notification'],
         queryFn:()=> exampleService.getAllExample()
     })
 }
-export const useUpdateExample=(updateId:string)=>{
+
+export const useFetchAllRequestNotification =()=>{
+    return useQuery({
+        queryKey:['request','notification'],
+        queryFn:()=> exampleService.getAllExample()
+    })
+}
+export const useFetchAllMovementNotification =()=>{
+    return useQuery({
+        queryKey:['notification','notification'],
+        queryFn:()=> exampleService.getAllExample()
+    })
+}
+
+export const useUpdateNotification=(updateId:string)=>{
     const queryClient = useQueryClient()
     return useMutation({
         mutationFn: (example: IExampleDto ) => exampleService.updateExample(example,updateId),
         onSuccess:async ()=>{
-            await queryClient.invalidateQueries(['example'])
-            await queryClient.resetQueries(['example'])
+            await queryClient.invalidateQueries(['notification'])
+            await queryClient.resetQueries(['notification'])
         }
     })
 }
 
-export const useDeleteExample = () =>{
+export const useDeleteNotification = () =>{
     const queryClient = useQueryClient()
     return useMutation(
         {
