@@ -1,6 +1,6 @@
 import React from 'react';
-import MaterialBar from "@/app/dashboard/material/_components/material_bar";
-import TabFilter from "@/app/dashboard/material/_components/tab_filter";
+import MaterialBar from "@/app/dashboard/material/_components/tab/material_bar";
+import TabFilter from "@/app/dashboard/material/_components/tab/tab_filter";
 
 const Page = () => {
     return (

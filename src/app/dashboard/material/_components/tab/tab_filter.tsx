@@ -5,7 +5,7 @@ import {IMaterialStatus} from "@/app/dashboard/material/_services/definition";
 import {Filter} from "lucide-react";
 import Link from "next/link";
 import {useSearchParams} from "next/navigation";
-import TabItem from "@/app/dashboard/material/_components/tab_item";
+import TabItem from "@/app/dashboard/material/_components/tab/tab_item";
 
 const TabFilter = () => {
     const{data,isLoading,isSuccess}=useFetchAllStatus()
