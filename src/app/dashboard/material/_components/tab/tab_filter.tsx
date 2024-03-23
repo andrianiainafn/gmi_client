@@ -26,7 +26,7 @@ const TabFilter = () => {
         <div className="flex items-center justify-between">
             {
                 isSuccess && (
-                    <div className='flex bg-gray-100 px-3 py-1 space-x-2 dark:bg-gray-900 items-center'>
+                    <div className='flex bg-gray-100 px-3 py-1 space-x-5  dark:bg-gray-900 items-center'>
                         {
                             status.map((elem:IMaterialStatus,key:number)=>(
                                 <TabItem statusName={elem.materialStatusName} filter={filter} key={key}/>
