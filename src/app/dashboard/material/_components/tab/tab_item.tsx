@@ -11,7 +11,7 @@ const TabItem = (props:Props) => {
     const {refetch} = useFetchAllMaterial(statusName,0,20)
     return (
         <Link href={`/dashboard/material?filter=${statusName}`} onClick={()=>refetch()}
-               className={`${filter === `${statusName}` ? 'text-black bg-white px-2 py-1 rounded-lg cursor-pointer' : "text-gray-500 cursor-pointer"} `} >
+               className={`${filter === `${statusName}` ? 'text-black bg-white px-2 py-1 rounded-lg cursor-pointer' : "text-gray-500 px-2 py-1 cursor-pointer"}  `} >
             <p >
                 {statusName}
             </p>
