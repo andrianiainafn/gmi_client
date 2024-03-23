@@ -73,3 +73,7 @@
     @apply text-opacity-100 hover:text-teal-500 z-20
   }
 }
+th, td {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
