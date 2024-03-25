@@ -3,7 +3,7 @@ import React from 'react';
 import {useMaterialStore} from "@/app/dashboard/material/_state/material_state";
 import {IMaterial} from "@/app/dashboard/material/_services/definition";
 import {Button} from "@/components/ui/button";
-import {CircleX, Pencil, Trash} from "lucide-react";
+import {CircleX, Pencil} from "lucide-react";
 
 const TableRow = () => {
     const material = useMaterialStore.use.material()
