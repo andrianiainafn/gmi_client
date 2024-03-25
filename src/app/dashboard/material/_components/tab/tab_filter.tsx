@@ -35,7 +35,10 @@ const TabFilter = () => {
                     </div>
                 )
             }
-            <Filter />
+            <button className="flex items-center space-x-2 bg-gray-100 text-gray-500 py-1 px-3">
+                <Filter />
+                <span>Filters</span>
+            </button>
         </div>
     );
 };
