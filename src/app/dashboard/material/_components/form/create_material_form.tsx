@@ -2,9 +2,10 @@
 import React from 'react';
 import {useForm,SubmitHandler} from "react-hook-form";
 import {Button} from "@/components/ui/button";
-import {useFetchAllStatus} from "@/app/dashboard/material/_hooks/material_hook";
+import {useCreateMaterial, useFetchAllStatus} from "@/app/dashboard/material/_hooks/material_hook";
 import {IMaterialStatus} from "@/app/dashboard/material/_services/definition";
 import {CircleAlert} from "lucide-react";
+import {useMaterialStore} from "@/app/dashboard/material/_state/material_state";
 
 interface IFormInput{
     name:string,
@@ -17,14 +18,25 @@ interface Props{
 }
 
 const CreateMaterialForm = (props:Props) => {
+    const material = useMaterialStore.use.material()
+    const updateMaterial  = useMaterialStore.use.updateMaterial()
     const {data,isLoading,isSuccess} = useFetchAllStatus()
+    const {mutate,data:materialData,isSuccess:isCreateSuccess} = useCreateMaterial()
     const {
         register,
         handleSubmit,
         formState:{errors,isSubmitting},
     } = useForm<IFormInput>()
     const onSubmit: SubmitHandler<IFormInput> = (data)=>{
-        console.log(data)
+        mutate(
+            {
+                materialName: data.name,
+                serialNumber: data.serialNumber,
+                description:  data.description,
+                statusId:     data.statusId,
+                state:       "AVAILABLE"
+            }
+        )
     }
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
