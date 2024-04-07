@@ -18,7 +18,7 @@ const CreateMaterialModal = (props:Props) => {
                         <CgClose size={24}/>
                     </Button>
                 </div>
-                <CreateMaterialForm/>
+                <CreateMaterialForm HandleClickCancel={props.HandleClickCreate}/>
             </div>
         </div>
     );
