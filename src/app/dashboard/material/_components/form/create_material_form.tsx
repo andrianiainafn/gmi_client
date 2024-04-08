@@ -1,11 +1,12 @@
 "use client"
 import React from 'react';
 import {useForm,SubmitHandler} from "react-hook-form";
-import {Button} from "@/components/ui/button";
 import {useCreateMaterial, useFetchAllStatus} from "@/app/dashboard/material/_hooks/material_hook";
 import {IMaterialStatus} from "@/app/dashboard/material/_services/definition";
 import {CircleAlert} from "lucide-react";
 import {useMaterialStore} from "@/app/dashboard/material/_state/material_state";
+import CreateButton from "@/app/_common/components/create_button";
+import CancelButton from "@/app/_common/components/cancel_button";
 
 interface IFormInput{
     name:string,
@@ -21,7 +22,7 @@ const CreateMaterialForm = (props:Props) => {
     const material = useMaterialStore.use.material()
     const updateMaterial  = useMaterialStore.use.updateMaterial()
     const {data,isLoading,isSuccess} = useFetchAllStatus()
-    const {mutate,data:materialData,isSuccess:isCreateSuccess} = useCreateMaterial()
+    const {mutate,data:materialData,isLoading:isCreateLoading,isSuccess:isCreateSuccess} = useCreateMaterial()
     const {
         register,
         handleSubmit,
@@ -89,12 +90,8 @@ const CreateMaterialForm = (props:Props) => {
                         <span > This field is required</span>
                     </div>
                 }
-                <Button className="bg-teal-500 h-[6vh]" type="submit" >
-                    Create material
-                </Button>
-                <Button variant="secondary" className="h-[6vh]"  type="reset" onClick={props.HandleClickCancel}>
-                    Cancel
-                </Button>
+                <CreateButton label="material" isLoading={isCreateLoading}/>
+                <CancelButton HandleClickCancel={props.HandleClickCancel}/>
             </div>
         </form>
     );
