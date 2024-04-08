@@ -14,14 +14,14 @@ export const links:ILink[] = [
         href:"/dashboard"
     },
     {
-        label: "Materials",
-        icon: <BrickWall size={24} />,
-        href:"/dashboard/material?filter=All"
-    },
-    {
         label: "Departments",
         icon: <GiOrganigram size={24}/>,
         href:"/dashboard/department"
+    },
+    {
+        label: "Materials",
+        icon: <BrickWall size={24} />,
+        href:"/dashboard/material?filter=All"
     },
     {
         label: "Requests",
@@ -29,13 +29,13 @@ export const links:ILink[] = [
         href:"/dashboard/request"
     },
     {
-        label: "Users",
-        icon: <Users size={24}/>,
-        href:"/dashboard/user"
-    },
-    {
         label: "Reports",
         icon: <TbFileReport size={24}/>,
         href:"/dashboard/report"
+    },
+    {
+        label: "Users",
+        icon: <Users size={24}/>,
+        href:"/dashboard/user"
     },
 ]
