@@ -27,7 +27,7 @@ const TabItem = (props:Props) => {
         }
     }, [isSuccess,param,isRefetch]);
     return (
-            < Link href={`/dashboard/material?filter=${statusName}`} onClick={HandleClickRefetch} className={`${filter === `${statusName}` ? 'text-black bg-white px-2 py-1 rounded-lg cursor-pointer' : "text-gray-500 px-2 py-1 cursor-pointer"}  `} >
+            < Link href={`/dashboard/material?filter=${statusName}&page=0`} onClick={HandleClickRefetch} className={`${filter === `${statusName}` ? 'text-black bg-white px-2 py-1 rounded-lg cursor-pointer' : "text-gray-500 px-2 py-1 cursor-pointer"}  `} >
                 {statusName}
             </Link>
     );
