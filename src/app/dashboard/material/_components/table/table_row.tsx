@@ -4,9 +4,15 @@ import {useMaterialStore} from "@/app/dashboard/material/_state/material_state";
 import {IMaterial} from "@/app/dashboard/material/_services/definition";
 import {Button} from "@/components/ui/button";
 import {CircleX, Pencil} from "lucide-react";
+import { formatDistanceToNow } from 'date-fns';
 
 const TableRow = () => {
     const material = useMaterialStore.use.material()
+    const formatDate = (apiDate:Date) => {
+        const distance = formatDistanceToNow(new Date(apiDate), { addSuffix: true, includeSeconds: true });
+        const distanceWithoutAbout = distance.replace('about', '');
+        return distanceWithoutAbout
+    };
     return (
         <tbody className="text-center font-light text-sm text-gray-600 ">
             {
@@ -61,8 +67,18 @@ const TableRow = () => {
                                 )
                             }
                         </td>
-                        <td>
-                            {elem.createdAt}
+                        <td className="text-black">
+                            {
+                                elem.createdAt !== null ? (
+                                    <>
+                                        {formatDate(elem.createdAt!)}
+                                    </>
+                                ):(
+                                    <>
+
+                                    </>
+                                )
+                            }
                         </td>
                         <td className="flex space-x-2 items-center">
                             <Button variant="secondary" className=" flex w-[7vw] items-center space-x-2" >

@@ -9,7 +9,7 @@ interface Props{
 }
 const MaterialStatisticItem = (props:Props) => {
     const {total,label,number}=props
-    const percent = (number*100)/total
+    const percent = parseFloat(((number * 100) / total).toFixed(2));
     return (
         <div className="space-y-3 w-[33%]">
             <Card className="mx-auto max-w-sm h-[16vh]">

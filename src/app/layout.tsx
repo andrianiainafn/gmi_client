@@ -4,6 +4,7 @@ import "./globals.css";
 import QueryClientProvider from "@/lib/query-client-provider";
 import SessionProvider from "@/lib/session-provider";
 import ThemeProvider from "@/app/_common/components/theme_provider";
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
         <QueryClientProvider>
           <SessionProvider>
             {children}
+            <Toaster/>
           </SessionProvider>
         </QueryClientProvider>
       </ThemeProvider>

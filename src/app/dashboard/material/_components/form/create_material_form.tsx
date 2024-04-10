@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useForm,SubmitHandler} from "react-hook-form";
 import {useCreateMaterial, useFetchAllStatus} from "@/app/dashboard/material/_hooks/material_hook";
 import {IMaterialStatus} from "@/app/dashboard/material/_services/definition";
@@ -7,6 +7,8 @@ import {CircleAlert} from "lucide-react";
 import {useMaterialStore} from "@/app/dashboard/material/_state/material_state";
 import CreateButton from "@/app/_common/components/create_button";
 import CancelButton from "@/app/_common/components/cancel_button";
+import { ToastAction } from "@/components/ui/toast"
+import { useToast } from "@/components/ui/use-toast"
 
 interface IFormInput{
     name:string,
@@ -20,8 +22,9 @@ interface Props{
 
 const CreateMaterialForm = (props:Props) => {
     const material = useMaterialStore.use.material()
+    const { toast } = useToast()
     const updateMaterial  = useMaterialStore.use.updateMaterial()
-    const {data,isLoading,isSuccess} = useFetchAllStatus()
+    const {data,isLoading,isSuccess,isError} = useFetchAllStatus()
     const {mutate,data:materialData,isLoading:isCreateLoading,isSuccess:isCreateSuccess} = useCreateMaterial()
     const {
         register,
@@ -39,6 +42,20 @@ const CreateMaterialForm = (props:Props) => {
             }
         )
     }
+    useEffect(()=>{
+        if(isCreateSuccess){
+            const updatedMaterial = [materialData?.data,...material]
+            updateMaterial(updatedMaterial)
+            console.log(updatedMaterial)
+            toast({
+                title: "Create material ",
+                description: "Friday, February 10, 2023 at 5:57 PM",
+                action: (
+                    <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
+                ),
+            })
+        }
+    },[isCreateSuccess])
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid w-full  items-center gap-1.5 space-y-2">
