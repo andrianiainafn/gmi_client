@@ -30,6 +30,15 @@ export const useFetchAllMaterial =(status:string,page:number,size:number)=>{
     })
 }
 
+export const useFetchPageSize = ()=>{
+    return useQuery(
+        {
+            queryKey:["page_size"],
+            queryFn:()=>materialService.getMaterialCount()
+        }
+    )
+}
+
 export const useFetchAllStatus =()=>{
     return useQuery({
         queryKey:['statuses'],

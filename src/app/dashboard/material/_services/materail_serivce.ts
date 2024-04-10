@@ -13,6 +13,9 @@ class MaterialService{
     public getAllStatus(){
         return httpClient.get(MATERIAL_ENDPOINTS.GET_STATUS)
     }
+    public getMaterialCount(){
+        return httpClient.get(MATERIAL_ENDPOINTS.GET_PAGE_SIZE)
+    }
     public getAllMateriel(status:string,page:number,size:number){
         return httpClient.get(`${MATERIAL_ENDPOINTS.GET_ALL}?status=${status}`)
     }
