@@ -1,17 +1,16 @@
 import {useMutation, useQuery, useQueryClient} from "react-query";
 
 import {exampleService} from "@/app/feat-exemple/_services/exemple_service";
-import {IExampleDto} from "@/app/dashboard/request/_services/definition";
+import {IExampleDto, IRequestToCreate} from "@/app/dashboard/request/_services/definition";
+import {requestService} from "@/app/dashboard/request/_services/request_service";
 
-export  const useCreateExample= ()=>{
+export  const useCreateRequest= ()=>{
     const queryClient = useQueryClient()
     return useMutation(
         {
-            mutationKey:['example'],
-            mutationFn: (exampleToCreate:IExampleDto)=> exampleService.createExample(exampleToCreate),
+            mutationKey:['request-create'],
+            mutationFn: (request:IRequestToCreate)=> requestService.createRequest(request),
             onSuccess: async ()=>{
-                await queryClient.resetQueries(['example'])
-                await queryClient.invalidateQueries(['example'])
             }
         }
     )
@@ -23,10 +22,10 @@ export const useFetchExampleById = (exampleId:string) =>{
     })
 }
 
-export const useFetchAllExample =()=>{
+export const useFetchPriority =()=>{
     return useQuery({
-        queryKey:['example'],
-        queryFn:()=> exampleService.getAllExample()
+        queryKey:['priority'],
+        queryFn:()=> requestService.getPriority()
     })
 }
 export const useUpdateExample=(updateId:string)=>{
@@ -39,6 +38,8 @@ export const useUpdateExample=(updateId:string)=>{
         }
     })
 }
+
+
 
 export const useDeleteExample = () =>{
     const queryClient = useQueryClient()
