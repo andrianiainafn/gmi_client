@@ -5,7 +5,8 @@ import {useSession} from "next-auth/react";
 
 interface Props{
     profileUrl:string,
-    firstname:String
+    firstname:string,
+    role:string
 }
 
 const UserWrapper = (props:Props) => {
@@ -20,7 +21,7 @@ const UserWrapper = (props:Props) => {
                 <h5>
                     {session.data?.user?.name}
                 </h5>
-                <p className="opacity-75">@admin</p>
+                <p className="opacity-75">{props.role}</p>
             </div>
         </div>
 

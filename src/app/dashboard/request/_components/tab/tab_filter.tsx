@@ -1,22 +1,25 @@
+'use client'
 import React, {useEffect, useState} from 'react';
 import {IMaterialStatus} from "@/app/dashboard/material/_services/definition";
 import TabItem from "@/app/dashboard/material/_components/tab/tab_item";
 import {Filter} from "lucide-react";
 import {useFetchAllStatus} from "@/app/dashboard/material/_hooks/material_hook";
 import {useSearchParams} from "next/navigation";
+import TabItemRequest from "@/app/dashboard/request/_components/tab/tab_item_request";
+import {useFetchPriority} from "@/app/dashboard/request/_hooks/request_hook";
+import {IPriority} from "@/app/dashboard/request/_services/definition";
 
 const RequestTabFilter = () => {
-    const{data,isLoading,isSuccess}=useFetchAllStatus()
-    const[priority,setPriority] = useState<IMaterialStatus[]>([])
+    const{data,isSuccess}=useFetchPriority()
+    const[priority,setPriority] = useState<IPriority[]>([])
     const filterParam = useSearchParams()
     const filter = filterParam.get('filter')
     useEffect(() => {
         if(isSuccess){
             setPriority([{
-                materialStatusId:   '1',
-                materialStatusName: 'All',
-                createdAt:          new Date(),
-                updatedAt:          new Date(),
+                priorityId:'1',
+                priorityDesignation:'All',
+                request:[]
             },...data.data])
         }
     }, [isSuccess]);
@@ -26,8 +29,8 @@ const RequestTabFilter = () => {
                 isSuccess && (
                     <div className='flex bg-gray-100 px-3 py-1 space-x-5  dark:bg-gray-900 items-center'>
                         {
-                            priority.map((elem:IMaterialStatus,key:number)=>(
-                                <TabItem statusName={elem.materialStatusName} filter={filter} key={key}/>
+                            priority.map((elem:IPriority,key:number)=>(
+                                <TabItemRequest statusName={elem.priorityDesignation} filter={filter} key={key}/>
                             ))
                         }
                     </div>
