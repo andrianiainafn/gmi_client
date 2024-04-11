@@ -22,7 +22,7 @@ const DashboardNavBar = () => {
             <div className="flex space-x-4 items-center">
                 <Bell className={`${isShow ? 'text-teal-500': ''} hover:text-teal-500 cursor-pointer `} onClick={()=>setIsShow(!isShow)} />
                 <Settings className="hover:text-teal-500 cursor-pointer"/>
-                <UserWrapper firstname="" profileUrl=""/>
+                <UserWrapper firstname="" profileUrl="" role="@Admin"/>
             </div>
             <NotificationContainer/>
         </div>
