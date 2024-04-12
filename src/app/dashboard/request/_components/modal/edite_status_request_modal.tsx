@@ -4,11 +4,12 @@ import {requestStatus} from "@/app/_common/constant/data";
 import CancelButton from "@/app/_common/components/cancel_button";
 import {Button} from "@/components/ui/button";
 import ModalTitle from "@/app/_common/components/modal_title";
-import {CircleAlert, Loader2} from "lucide-react";
+import {Loader2} from "lucide-react";
 import {ToastAction} from "@/components/ui/toast";
 import {toast} from "@/components/ui/use-toast";
 import ActualRequestStatus from "@/app/dashboard/request/_components/form/actual_request_status";
 import FieldEmptyAlert from "@/app/_common/components/field_empty_alert";
+import {useRequestStore} from "@/app/dashboard/request/_state/request_state";
 
 interface Props{
     HandleClickEditStatus:()=>void,
@@ -17,9 +18,11 @@ interface Props{
 }
 
 const EditStatusRequestModal = (props:Props) => {
+    const request = useRequestStore.use.request()
+    const updateRequest = useRequestStore.use.updateRequest()
     const [newStatus,setNewStatus] = useState<string>('')
     const{requestId,HandleClickEditStatus,actualRequestStatus}=props
-    const {mutate,isSuccess,isLoading} = useUpdateRequestStatus(requestId)
+    const {mutate,isSuccess,data,isLoading} = useUpdateRequestStatus(requestId)
     const [error,setError] = useState(false)
     const HandleClickNewStatus = (newStatus : string)=>{
         setNewStatus(newStatus)
@@ -33,6 +36,9 @@ const EditStatusRequestModal = (props:Props) => {
     }
     useEffect(() => {
         if(isSuccess){
+            const index = request.findIndex(objet => objet.requestId === requestId);
+            request.splice(index,index,data?.data)
+            updateRequest([...request])
             toast({
                 title: "Change material status",
                 description: "Material status has been changed successfully",

@@ -1,9 +1,6 @@
 'use client'
 import React, {useEffect, useState} from 'react';
-import {IMaterialStatus} from "@/app/dashboard/material/_services/definition";
-import TabItem from "@/app/dashboard/material/_components/tab/tab_item";
 import {Filter} from "lucide-react";
-import {useFetchAllStatus} from "@/app/dashboard/material/_hooks/material_hook";
 import {useSearchParams} from "next/navigation";
 import TabItemRequest from "@/app/dashboard/request/_components/tab/tab_item_request";
 import {useFetchPriority} from "@/app/dashboard/request/_hooks/request_hook";
