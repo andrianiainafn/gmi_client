@@ -96,6 +96,6 @@ th, td {
   height: 100%;
   padding: 0 !important;
   margin: 0 !important;
-  z-index: 9;
+  z-index: 12;
   background-color: rgba(0, 0, 0, 0.5);
 }
