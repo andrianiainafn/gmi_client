@@ -26,7 +26,7 @@ export const links:ILink[] = [
     {
         label: "Requests",
         icon: <GitPullRequest  size={24}/>,
-        href:"/dashboard/request"
+        href:"/dashboard/request?priority=All"
     },
     {
         label: "Reports",
