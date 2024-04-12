@@ -49,7 +49,8 @@ const CreateMaterialForm = (props:Props) => {
             console.log(updatedMaterial)
             toast({
                 title: "Create material ",
-                description: "Friday, February 10, 2023 at 5:57 PM",
+                description: "Material has been created successfully",
+                variant: "success",
                 action: (
                     <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
                 ),
@@ -107,7 +108,7 @@ const CreateMaterialForm = (props:Props) => {
                         <span > This field is required</span>
                     </div>
                 }
-                <CreateButton label="material" isLoading={isCreateLoading}/>
+                <CreateButton label="Create material" isLoading={isCreateLoading}/>
                 <CancelButton HandleClickCancel={props.HandleClickCancel}/>
             </div>
         </form>
