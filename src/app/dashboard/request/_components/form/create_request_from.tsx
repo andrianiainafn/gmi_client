@@ -93,7 +93,7 @@ const CreateRequestFrom = (props:Props) => {
                         <span > This field is required</span>
                     </div>
                 }
-                <CreateButton label="request" isLoading={isCreateLoading}/>
+                <CreateButton label="Post request" isLoading={isCreateLoading}/>
                 <CancelButton HandleClickCancel={props.HandleClickCancel}/>
             </div>
         </form>
