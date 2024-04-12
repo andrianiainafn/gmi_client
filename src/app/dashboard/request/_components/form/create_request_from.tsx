@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import {CircleAlert} from "lucide-react";
 import CreateButton from "@/app/_common/components/create_button";
 import CancelButton from "@/app/_common/components/cancel_button";
 import {useToast} from "@/components/ui/use-toast";
@@ -8,6 +7,7 @@ import {ToastAction} from "@/components/ui/toast";
 import {useRequestStore} from "@/app/dashboard/request/_state/request_state";
 import {useCreateRequest, useFetchPriority} from "@/app/dashboard/request/_hooks/request_hook";
 import {IPriority} from "@/app/dashboard/request/_services/definition";
+import FieldEmptyAlert from "@/app/_common/components/field_empty_alert";
 
 interface IFormInput{
     name:string,
@@ -57,12 +57,7 @@ const CreateRequestFrom = (props:Props) => {
                 <label htmlFor='name'>Name</label>
                 <input type='text'  placeholder='Ex: Cable Rj45' {...register("name",{required:true})}
                        className='outline-none p-2 border '  />
-                {errors.name &&
-                    <div className="flex space-x-2 items-center text-red-600">
-                        <CircleAlert size={18}  />
-                        <span > This field is required</span>
-                    </div>
-                }
+                <FieldEmptyAlert error={errors.name}/>
                 <label htmlFor='statusId'>Priority</label>
                 <select {...register("statusId",{required:true})} className="bg-transparent border px-2 py-3">
                     <option disabled selected value="">Choose an option</option>
@@ -78,22 +73,12 @@ const CreateRequestFrom = (props:Props) => {
                         )
                     }
                 </select>
-                {errors.statusId &&
-                    <div className="flex space-x-2 items-center text-red-600">
-                        <CircleAlert size={18}  />
-                        <span > This field is required</span>
-                    </div>
-                }
+                <FieldEmptyAlert error={errors.statusId}/>
                 <label htmlFor='description'>Description</label>
                 <textarea   placeholder='Ex: Cable 2m red' {...register("description",{required:true})}
                             className='outline-none p-2 border '  />
-                {errors.description &&
-                    <div className="flex space-x-2 items-center text-red-600">
-                        <CircleAlert size={18}  />
-                        <span > This field is required</span>
-                    </div>
-                }
-                <CreateButton label="request" isLoading={isCreateLoading}/>
+                <FieldEmptyAlert error={errors.description}/>
+                <CreateButton label="Post request" isLoading={isCreateLoading}/>
                 <CancelButton HandleClickCancel={props.HandleClickCancel}/>
             </div>
         </form>

@@ -1,5 +1,6 @@
 import {create,  StoreApi, UseBoundStore} from 'zustand'
 import {IPriority, IRequest} from "@/app/dashboard/request/_services/definition";
+import {IAccount} from "@/app/dashboard/user/_services/definition";
 
 
 type State = {
@@ -9,7 +10,7 @@ type State = {
     materialName:  string;
     actualStatus:  string;
     requestStatus: string;
-    account:       null;
+    account:       IAccount;
     priority:      IPriority;
     createdAt:     Date;
     updatedAt:     Date;
@@ -53,7 +54,29 @@ export const useRequestStore = createSelectors(create<State & Action>((set) => (
     createdAt:      new Date(),
     updatedAt:      new Date(),
     request:[],
-    account:null,
+    account:{
+        accountId: "",
+        firstname: "",
+        lastname: "",
+        email: "",
+        profileUrl: "",
+        roles: [
+            {
+                roleId: "",
+                roleName: "",
+                account: [],
+                createdAt: new Date(),
+                updatedAt: new Date()
+            }
+        ],
+        department: {
+            departmentId: "",
+            departmentName: "Marketing",
+            accounts: [],
+            createdAt: new Date(),
+            updatedAt: new Date()
+        }
+    },
     requestStatus:'',
     updateRequestId:(requestId)=> set(()=>({requestId: requestId})),
     updateMaterialName:(materialName)=> set(()=>({materialName: materialName})),

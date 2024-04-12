@@ -18,7 +18,7 @@ const CreateButton = (props:Props) => {
                 )
             }
             <span>
-                Create {props.label}
+                {props.label}
             </span>
         </Button>
     );

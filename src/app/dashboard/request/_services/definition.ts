@@ -5,7 +5,7 @@ export interface IRequest {
     requestId:     string;
     description:   string;
     materialName:  string;
-    actualStatus:  string;
+    actualPriority:  string;
     requestStatus: string;
     account:       null;
     priority:      IPriority;

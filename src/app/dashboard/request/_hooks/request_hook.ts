@@ -21,17 +21,22 @@ export const useFetchExampleById = (exampleId:string) =>{
         queryFn:()=> exampleService.getExampleByExampleId(exampleId)
     })
 }
-
+export const useFetchRequest = (priority:string,page:number,size:number)=>{
+    return useQuery({
+        queryKey:['request'],
+        queryFn:()=> requestService.getRequest(priority,page,size)
+    })
+}
 export const useFetchPriority =()=>{
     return useQuery({
         queryKey:['priority'],
         queryFn:()=> requestService.getPriority()
     })
 }
-export const useUpdateExample=(updateId:string)=>{
+export const useUpdateRequestStatus=(updateId:string)=>{
     const queryClient = useQueryClient()
     return useMutation({
-        mutationFn: (example: IExampleDto ) => exampleService.updateExample(example,updateId),
+        mutationFn: (requestStatus: string ) => requestService.updateRequestStatus(requestStatus,updateId),
         onSuccess:async ()=>{
             await queryClient.invalidateQueries(['example'])
             await queryClient.resetQueries(['example'])

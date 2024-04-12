@@ -6,9 +6,9 @@ export  default function  ExampleLayout ({ children }: PropsWithChildren) {
     return (
         <div className="flex justify-between">
             <LeftBar/>
-            <div className="w-[86%] ml-[14%] flex flex-col space-y-3 px-3">
+            <div className="w-[86%] ml-[14%] flex flex-col  px-3">
                 <DashboardNavBar/>
-                <div>
+                <div className="mt-[10vh]">
                     {children}
                 </div>
             </div>

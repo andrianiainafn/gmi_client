@@ -12,7 +12,7 @@ const DashboardNavBar = () => {
     const isShow = useUserStore.use.isShowNotification()
     const setIsShow = useUserStore(state => state.updateIsShowNotification)
     return (
-        <div className="py-2 flex justify-between items-center relative">
+        <div className="py-2 fixed flex justify-between bg-white z-10 items-center top-0 w-[84%] h-[10vh]">
             <h2 className="flex items-center space-x-2 text-xl">
                 <span>
                     Hey, {session.data?.user?.name}

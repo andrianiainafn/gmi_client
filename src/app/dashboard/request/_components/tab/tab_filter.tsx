@@ -13,7 +13,7 @@ const RequestTabFilter = () => {
     const{data,isSuccess}=useFetchPriority()
     const[priority,setPriority] = useState<IPriority[]>([])
     const filterParam = useSearchParams()
-    const filter = filterParam.get('filter')
+    const filter = filterParam.get('priority')
     useEffect(() => {
         if(isSuccess){
             setPriority([{
@@ -30,7 +30,7 @@ const RequestTabFilter = () => {
                     <div className='flex bg-gray-100 px-3 py-1 space-x-5  dark:bg-gray-900 items-center'>
                         {
                             priority.map((elem:IPriority,key:number)=>(
-                                <TabItemRequest statusName={elem.priorityDesignation} filter={filter} key={key}/>
+                                <TabItemRequest priorityDesignation={elem.priorityDesignation} filter={filter} key={key}/>
                             ))
                         }
                     </div>
