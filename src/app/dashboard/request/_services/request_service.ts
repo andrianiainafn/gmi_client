@@ -18,11 +18,15 @@ class RequestService{
     public getPriority(){
         return httpClient.get(REQUEST_ENDPOINTS.GET_PRIORITY)
     }
-    public updateExample(exampleToUpdate: IExampleDto,id:string){
-        return httpClient.put(EXAMPLE_ENDPOINTS.UPDATE.replace("id",id),exampleToUpdate)
+    public updateRequestStatus(requestStatus:string,id:string){
+        return httpClient.put(REQUEST_ENDPOINTS.UPDATE.replace("id",id),{requestStatus:requestStatus})
     }
     public deleteExampleByExampleId(exampleId: string){
         return httpClient.get(EXAMPLE_ENDPOINTS.DELETE.replace("id",exampleId))
+    }
+
+    public getRequest(priority:string,page:number,size:number) {
+        return httpClient.get(`${REQUEST_ENDPOINTS.GET_ALL}?priority=${priority}&page=${page}`);
     }
 }
 export const requestService = new RequestService()
