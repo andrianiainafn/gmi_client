@@ -4,9 +4,11 @@ import {requestStatus} from "@/app/_common/constant/data";
 import CancelButton from "@/app/_common/components/cancel_button";
 import {Button} from "@/components/ui/button";
 import ModalTitle from "@/app/_common/components/modal_title";
-import {Loader2} from "lucide-react";
+import {CircleAlert, Loader2} from "lucide-react";
 import {ToastAction} from "@/components/ui/toast";
 import {toast} from "@/components/ui/use-toast";
+import ActualRequestStatus from "@/app/dashboard/request/_components/form/actual_request_status";
+import FieldEmptyAlert from "@/app/_common/components/field_empty_alert";
 
 interface Props{
     HandleClickEditStatus:()=>void,
@@ -18,11 +20,16 @@ const EditStatusRequestModal = (props:Props) => {
     const [newStatus,setNewStatus] = useState<string>('')
     const{requestId,HandleClickEditStatus,actualRequestStatus}=props
     const {mutate,isSuccess,isLoading} = useUpdateRequestStatus(requestId)
+    const [error,setError] = useState(false)
     const HandleClickNewStatus = (newStatus : string)=>{
         setNewStatus(newStatus)
     }
     const HandleClickConfirm = ()=>{
-        mutate(newStatus)
+        if(newStatus !== ''){
+            mutate(newStatus)
+        }else{
+            setError(true)
+        }
     }
     useEffect(() => {
         if(isSuccess){
@@ -40,17 +47,7 @@ const EditStatusRequestModal = (props:Props) => {
         <div className="overlay" onClick={HandleClickEditStatus}>
             <div className="central flex flex-col p-2 space-y-4" onClick={(e)=>e.stopPropagation()}>
                 <ModalTitle HandleClick={HandleClickEditStatus} label="Edit request status"/>
-                <div className="flex flex-col items-start space-y-2">
-                    <h4>
-                        Actual status :
-                    </h4>
-                    <div className="flex items-center text-sm space-x-2 bg-gray-300 bg-opacity-30  py-1 px-3 rounded-full">
-                        {/*<div className="bg-gray-300 rounded-full h-2 w-2 "/>*/}
-                        <p>
-                            {actualRequestStatus}
-                        </p>
-                    </div>
-                </div>
+                <ActualRequestStatus actualRequestStatus={actualRequestStatus}/>
                 <div className="flex flex-col space-y-2 items-start">
                     <h4>
                         Change status to :
@@ -78,6 +75,7 @@ const EditStatusRequestModal = (props:Props) => {
                             ))
                         }
                     </div>
+                    <FieldEmptyAlert error={error}/>
                 </div>
                 <Button disabled={isLoading} onClick={HandleClickConfirm} className="bg-teal-500 h-[6vh] flex items-center space-x-2"  >
                     {

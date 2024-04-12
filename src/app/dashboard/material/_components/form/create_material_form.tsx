@@ -3,12 +3,12 @@ import React, {useEffect} from 'react';
 import {useForm,SubmitHandler} from "react-hook-form";
 import {useCreateMaterial, useFetchAllStatus} from "@/app/dashboard/material/_hooks/material_hook";
 import {IMaterialStatus} from "@/app/dashboard/material/_services/definition";
-import {CircleAlert} from "lucide-react";
 import {useMaterialStore} from "@/app/dashboard/material/_state/material_state";
 import CreateButton from "@/app/_common/components/create_button";
 import CancelButton from "@/app/_common/components/cancel_button";
 import { ToastAction } from "@/components/ui/toast"
 import { useToast } from "@/components/ui/use-toast"
+import FieldEmptyAlert from "@/app/_common/components/field_empty_alert";
 
 interface IFormInput{
     name:string,
@@ -63,21 +63,11 @@ const CreateMaterialForm = (props:Props) => {
                 <label htmlFor='name'>Name</label>
                 <input type='text'  placeholder='Ex: Cable Rj45' {...register("name",{required:true})}
                        className='outline-none p-2 border '  />
-                {errors.name &&
-                    <div className="flex space-x-2 items-center text-red-600">
-                        <CircleAlert size={18}  />
-                        <span > This field is required</span>
-                    </div>
-                }
+                <FieldEmptyAlert error={errors.name}/>
                 <label htmlFor='serialNumber'>Serial number</label>
                 <input type='text'   placeholder='Ex: E3412' {...register("serialNumber",{required:true}) }
                        className='outline-none p-2 border '  />
-                {errors.serialNumber &&
-                    <div className="flex space-x-2 items-center text-red-600">
-                        <CircleAlert size={18}  />
-                        <span > This field is required</span>
-                    </div>
-                }
+                <FieldEmptyAlert error={errors.serialNumber}/>
                 <label htmlFor='statusId'>Status</label>
                 <select {...register("statusId",{required:true})} className="bg-transparent border px-2 py-3">
                     <option disabled selected value="">Choose an option</option>
@@ -93,21 +83,11 @@ const CreateMaterialForm = (props:Props) => {
                         )
                     }
                 </select>
-                {errors.statusId &&
-                    <div className="flex space-x-2 items-center text-red-600">
-                        <CircleAlert size={18}  />
-                        <span > This field is required</span>
-                    </div>
-                }
+                <FieldEmptyAlert error={errors.statusId}/>
                 <label htmlFor='description'>Description</label>
                 <textarea   placeholder='Ex: Cable 2m red' {...register("description",{required:true})}
                        className='outline-none p-2 border '  />
-                {errors.description &&
-                    <div className="flex space-x-2 items-center text-red-600">
-                        <CircleAlert size={18}  />
-                        <span > This field is required</span>
-                    </div>
-                }
+                <FieldEmptyAlert error={errors.description}/>
                 <CreateButton label="Create material" isLoading={isCreateLoading}/>
                 <CancelButton HandleClickCancel={props.HandleClickCancel}/>
             </div>
