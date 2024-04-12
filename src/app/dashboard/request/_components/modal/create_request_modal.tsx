@@ -1,7 +1,5 @@
 import React from 'react';
 import CreateRequestFrom from "@/app/dashboard/request/_components/form/create_request_from";
-import {Button} from "@/components/ui/button";
-import {CgClose} from "react-icons/cg";
 import ModalTitle from "@/app/_common/components/modal_title";
 
 interface  Props{

@@ -1,7 +1,5 @@
 import React from 'react';
-import {CgClose} from "react-icons/cg";
 import CreateMaterialForm from "@/app/dashboard/material/_components/form/create_material_form";
-import {Button} from "@/components/ui/button";
 import ModalTitle from "@/app/_common/components/modal_title";
 
 interface Props{

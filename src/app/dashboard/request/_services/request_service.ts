@@ -1,7 +1,6 @@
 import {httpClient} from "@/lib/axios";
-
 import {EXAMPLE_ENDPOINTS} from "@/app/feat-exemple/_services/endpoint";
-import {IExampleDto, IRequestToCreate} from "@/app/dashboard/request/_services/definition";
+import {IRequestToCreate} from "@/app/dashboard/request/_services/definition";
 import {REQUEST_ENDPOINTS} from "@/app/dashboard/request/_services/endpoint";
 
 class RequestService{

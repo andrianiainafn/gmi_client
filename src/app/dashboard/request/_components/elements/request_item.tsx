@@ -21,8 +21,7 @@ const RequestItem = (props:Props) => {
     const{requestId,createdAt,description,materialName,actualPriority,requestStatus,account}=props
     const formatDate = (apiDate:Date) => {
         const distance = formatDistanceToNow(new Date(apiDate), { addSuffix: true, includeSeconds: true });
-        const distanceWithoutAbout = distance.replace('about', '');
-        return distanceWithoutAbout
+        return distance.replace('about', '')
     };
     const [isEditStatus,setIsEdit]=useState<boolean>(false)
     const HandleClickEditStatus = ()=>{

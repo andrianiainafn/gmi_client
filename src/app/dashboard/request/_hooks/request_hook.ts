@@ -1,7 +1,7 @@
 import {useMutation, useQuery, useQueryClient} from "react-query";
 
 import {exampleService} from "@/app/feat-exemple/_services/exemple_service";
-import {IExampleDto, IRequestToCreate} from "@/app/dashboard/request/_services/definition";
+import { IRequestToCreate} from "@/app/dashboard/request/_services/definition";
 import {requestService} from "@/app/dashboard/request/_services/request_service";
 
 export  const useCreateRequest= ()=>{

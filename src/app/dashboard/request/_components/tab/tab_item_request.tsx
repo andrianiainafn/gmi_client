@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {useSearchParams} from "next/navigation";
-import {useFetchAllMaterial} from "@/app/dashboard/material/_hooks/material_hook";
-import {useMaterialStore} from "@/app/dashboard/material/_state/material_state";
 import Link from "next/link";
 import {useFetchRequest} from "@/app/dashboard/request/_hooks/request_hook";
 import {useRequestStore} from "@/app/dashboard/request/_state/request_state";
