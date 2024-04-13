@@ -1,6 +1,6 @@
 import {useMutation, useQuery, useQueryClient} from "react-query";
 import {exampleService} from "@/app/feat-exemple/_services/exemple_service";
-import {IMaterialCreate} from "@/app/dashboard/material/_services/definition";
+import {IEditMaterial, IMaterialCreate} from "@/app/dashboard/material/_services/definition";
 import {materialService} from "@/app/dashboard/material/_services/materail_serivce";
 
 export  const useCreateMaterial= ()=>{
@@ -49,7 +49,7 @@ export const useFetchAllStatus =()=>{
 export const useUpdateMaterial=(updateId:string)=>{
     const queryClient = useQueryClient()
     return useMutation({
-        mutationFn: (material: IMaterialCreate ) => materialService.updateMaterial(material,updateId),
+        mutationFn: (material: IEditMaterial ) => materialService.updateMaterial(material,updateId),
         onSuccess:async ()=>{
             await queryClient.invalidateQueries(['example'])
             await queryClient.resetQueries(['example'])
