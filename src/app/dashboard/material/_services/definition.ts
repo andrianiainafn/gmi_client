@@ -1,3 +1,5 @@
+import {IAccount} from "@/app/dashboard/user/_services/definition";
+
 export interface IExampleDto{
     message: string
 }
@@ -15,7 +17,7 @@ export interface IMaterial {
     description:    string;
     actualStatus:   string;
     state:          string;
-    account:        null;
+    account:        IAccount[];
     materialStatus: IMaterialStatus;
     histories:      any[];
     createdAt:      null;
@@ -27,4 +29,14 @@ export interface IMaterialStatus {
     materialStatusName: string;
     createdAt:          Date;
     updatedAt:          Date;
+}
+
+export interface IEditMaterial {
+    materialId:     string;
+    materialName:   string;
+    serialNumber:   string;
+    description:    string;
+    statusId:     string;
+    state:          string;
+    accountId:       string[];
 }
