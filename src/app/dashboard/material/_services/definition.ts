@@ -17,7 +17,7 @@ export interface IMaterial {
     description:    string;
     actualStatus:   string;
     state:          string;
-    account:        IAccount[];
+    accounts:        IAccount[];
     materialStatus: IMaterialStatus;
     histories:      any[];
     createdAt:      null;
