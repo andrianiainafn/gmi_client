@@ -57,12 +57,12 @@ export const useUpdateMaterial=(updateId:string)=>{
     })
 }
 
-export const useDeleteExample = () =>{
+export const useDeleteMaterial = () =>{
     const queryClient = useQueryClient()
     return useMutation(
         {
             mutationKey:['delete'],
-            mutationFn:(exampleId:string)=> exampleService.deleteExampleByExampleId(exampleId),
+            mutationFn:(materialId:string)=> materialService.deleteMaterialId(materialId),
             onSuccess: async () =>{
                 await queryClient.invalidateQueries(['example'])
                 await queryClient.resetQueries(['example'])

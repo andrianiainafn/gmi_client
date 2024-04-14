@@ -4,6 +4,7 @@ import {CircleX, Pencil} from "lucide-react";
 import {IMaterial} from "@/app/dashboard/material/_services/definition";
 import {formatDistanceToNow} from "date-fns";
 import EditMaterialModal from "@/app/dashboard/material/_components/modal/edit_material_modal";
+import {AnimatedTooltip} from "@/components/ui/animated-tooltip";
 
 interface Props{
     rank:number,
@@ -68,10 +69,8 @@ const MaterialItem = (props:Props) => {
                 </td>
                 <td>
                     {
-                        elem.account ? (
-                            <>
-                                {elem.account}
-                            </>
+                        elem.accounts ? (
+                            <AnimatedTooltip items={elem.accounts} isList={true}/>
                         ):(
                             <>
                                 no account associated

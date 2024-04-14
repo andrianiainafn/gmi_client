@@ -1,9 +1,11 @@
 import {create,  StoreApi, UseBoundStore} from 'zustand'
 import {IMaterial} from "@/app/dashboard/material/_services/definition";
+import {IAccount} from "@/app/dashboard/user/_services/definition";
 
 
 type State = {
     material:IMaterial[]
+    materialOwners:IAccount[]
     materialId:     string;
     materialName:   string;
     serialNumber:   string;
@@ -16,6 +18,7 @@ type State = {
 
 type Action = {
     updateMaterial:(material: State['material'])=>void
+    updateMaterialOwners:(material: State['materialOwners'])=>void
     updateMaterialId:(materialId: State['materialId'])=>void
     updateMaterialName:(materialName: State['materialName'])=>void
     updateSerialNumber:(serialNumber: State['serialNumber'])=>void
@@ -50,6 +53,7 @@ export const useMaterialStore = createSelectors(create<State & Action>((set) => 
     createdAt:      new Date(),
     updatedAt:      new Date(),
     material:[],
+    materialOwners:[],
     updateMaterialId:(materialId)=> set(()=>({materialId: materialId})),
     updateMaterialName:(materialName)=> set(()=>({materialName: materialName})),
     updateActualStatus:(actualStatus)=> set(()=>({actualStatus: actualStatus})),
@@ -59,4 +63,5 @@ export const useMaterialStore = createSelectors(create<State & Action>((set) => 
     updateCreatedAt:(createdAt)=> set(()=>({createdAt: createdAt})),
     updateUpdatedAt:(updatedAt)=> set(()=>({updatedAt: updatedAt})),
     updateMaterial:(material)=> set(()=>({material: material})),
+    updateMaterialOwners:(materialOwners)=> set(()=>({materialOwners: materialOwners})),
 })))

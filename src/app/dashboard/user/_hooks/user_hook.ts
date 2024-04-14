@@ -1,6 +1,7 @@
 import {useMutation, useQuery, useQueryClient} from "react-query";
 import {exampleService} from "@/app/feat-exemple/_services/exemple_service";
 import {IExampleDto} from "@/app/dashboard/user/_services/definition";
+import {userService} from "@/app/dashboard/user/_services/user_service";
 
 export  const useCreateExample= ()=>{
     const queryClient = useQueryClient()
@@ -15,17 +16,17 @@ export  const useCreateExample= ()=>{
         }
     )
 }
-export const useFetchExampleById = (exampleId:string) =>{
+export const useFetchUserByNameOrEmail = (emailOrName:string) =>{
     return useQuery({
-        queryKey:['example'],
-        queryFn:()=> exampleService.getExampleByExampleId(exampleId)
+        queryKey:['user-email-name'],
+        queryFn:()=> userService.searchUser(emailOrName)
     })
 }
 
-export const useFetchAllExample =()=>{
+export const useFetchAllUser =(page:number,size:number)=>{
     return useQuery({
-        queryKey:['example'],
-        queryFn:()=> exampleService.getAllExample()
+        queryKey:['users'],
+        queryFn:()=> userService.getAllUser(page,size)
     })
 }
 export const useUpdateExample=(updateId:string)=>{
