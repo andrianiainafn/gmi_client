@@ -10,18 +10,19 @@ interface Props{
 }
 
 const UserWrapper = (props:Props) => {
-    const session = useSession()
     return (
         <div className="flex items-center space-x-2">
             <Avatar>
-                <AvatarImage src="https://github.com/shadcn.png" />
-                <AvatarFallback>AL</AvatarFallback>
+                <AvatarImage src={props.profileUrl} />
+                <AvatarFallback>
+                    {props.firstname.charAt(0).toUpperCase()}
+                </AvatarFallback>
             </Avatar>
             <div>
                 <h5>
-                    {session.data?.user?.name}
+                    {props.firstname}
                 </h5>
-                <p className="opacity-75">{props.role}</p>
+                <p className="opacity-75">@{props.role}</p>
             </div>
         </div>
 
