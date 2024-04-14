@@ -2,7 +2,7 @@ import {httpClient} from "@/lib/axios";
 import {MATERIAL_ENDPOINTS} from "@/app/dashboard/material/_services/endpoint";
 import {IEditMaterial, IMaterial, IMaterialCreate} from "@/app/dashboard/material/_services/definition";
 import {EXAMPLE_ENDPOINTS} from "@/app/feat-exemple/_services/endpoint";
-import {IExampleDto} from "@/app/dashboard/user/_services/definition";
+import {IAccount, IExampleDto} from "@/app/dashboard/user/_services/definition";
 
 
 class MaterialService{
@@ -20,10 +20,20 @@ class MaterialService{
         return httpClient.get(`${MATERIAL_ENDPOINTS.GET_ALL}?status=${status}`)
     }
     public updateMaterial(material: IEditMaterial,id:string){
-        return httpClient.put(EXAMPLE_ENDPOINTS.UPDATE.replace("id",id),material)
+        return httpClient.put(MATERIAL_ENDPOINTS.UPDATE.replace("id",id),material)
     }
-    public deleteExampleByExampleId(exampleId: string){
-        return httpClient.get(EXAMPLE_ENDPOINTS.DELETE.replace("id",exampleId))
+    public deleteMaterialId(materialId: string){
+        return httpClient.get(EXAMPLE_ENDPOINTS.DELETE.replace("id",materialId))
+    }
+    public toggleOwner(owner:IAccount[],newOwner:IAccount){
+        if (owner.some(account => account.accountId === newOwner.accountId)){
+            owner.splice(owner.indexOf(newOwner),1)
+            console.log(owner)
+        }else{
+            owner.push(newOwner)
+            console.log(owner)
+        }
+        return owner
     }
 }
 export const materialService = new MaterialService()
