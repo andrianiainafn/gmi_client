@@ -1,21 +1,30 @@
 "use client"
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useSession} from "next-auth/react";
 import { MdWavingHand } from "react-icons/md";
 import {Bell, Settings} from "lucide-react";
 import UserWrapper from "@/app/dashboard/_components/user_wraper";
 import {useUserStore} from "@/state/global_state";
 import NotificationContainer from "@/app/dashboard/(notification)/_components/notification_container";
+import {useFetchUserInfo} from "@/app/dashboard/user/_hooks/user_hook";
 
 const DashboardNavBar = () => {
     const session = useSession()
     const isShow = useUserStore.use.isShowNotification()
     const setIsShow = useUserStore(state => state.updateIsShowNotification)
+    const {data,isSuccess}=useFetchUserInfo()
+    const userInfo = useUserStore.use.userInfo()
+    const updateUserINfo = useUserStore.use.updateUserInfo()
+    useEffect(()=>{
+        if (isSuccess){
+            updateUserINfo(data.data)
+        }
+    },[isSuccess])
     return (
         <div className="py-2 fixed flex justify-between bg-white z-10 items-center top-0 w-[84%] h-[10vh]">
             <h2 className="flex items-center space-x-2 text-xl">
                 <span>
-                    Hey, {session.data?.user?.name}
+                    Hey, {userInfo.firstname}
                 </span>
                 <MdWavingHand/>
             </h2>
@@ -23,8 +32,8 @@ const DashboardNavBar = () => {
                 <Bell className={`${isShow ? 'text-teal-500': ''} hover:text-teal-500 cursor-pointer `} onClick={()=>setIsShow(!isShow)} />
                 <Settings className="hover:text-teal-500 cursor-pointer"/>
                 {
-                    session.data?.user && (
-                        <UserWrapper firstname={session.data?.user?.name!} profileUrl="" role="Admin"/>
+                    isSuccess && (
+                        <UserWrapper firstname={`${userInfo.firstname} ${userInfo.lastname}`} profileUrl={userInfo.profileUrl} role={userInfo.roles[0].roleName}/>
                     )
                 }
             </div>
