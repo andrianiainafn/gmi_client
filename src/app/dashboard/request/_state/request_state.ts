@@ -54,12 +54,13 @@ export const useRequestStore = createSelectors(create<State & Action>((set) => (
     createdAt:      new Date(),
     updatedAt:      new Date(),
     request:[],
-    account:{
+    account: {
         accountId: "",
         firstname: "",
         lastname: "",
         email: "",
         profileUrl: "",
+        createdAt:new Date(),
         roles: [
             {
                 roleId: "",
@@ -75,7 +76,7 @@ export const useRequestStore = createSelectors(create<State & Action>((set) => (
             accounts: [],
             createdAt: new Date(),
             updatedAt: new Date()
-        }
+        },
     },
     requestStatus:'',
     updateRequestId:(requestId)=> set(()=>({requestId: requestId})),
