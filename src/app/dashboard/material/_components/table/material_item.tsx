@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import {Button} from "@/components/ui/button";
 import {CircleX, Pencil} from "lucide-react";
 import {IMaterial} from "@/app/dashboard/material/_services/definition";
-import {formatDistanceToNow} from "date-fns";
 import EditMaterialModal from "@/app/dashboard/material/_components/modal/edit_material_modal";
 import {AnimatedTooltip} from "@/components/ui/animated-tooltip";
+import {formatDate} from "@/app/_common/util";
 
 interface Props{
     rank:number,
@@ -14,11 +14,6 @@ interface Props{
 
 const MaterialItem = (props:Props) => {
     const{rank,elem}=props
-    const formatDate = (apiDate:Date) => {
-        const distance = formatDistanceToNow(new Date(apiDate), { addSuffix: true, includeSeconds: true });
-        const distanceWithoutAbout = distance.replace('about', '');
-        return distanceWithoutAbout
-    };
     const [isEdit,setIsEdit] = useState<boolean>(false)
     const HandleClickEdit = ()=>{
         setIsEdit(prev=>!prev)
@@ -40,7 +35,7 @@ const MaterialItem = (props:Props) => {
                 {
                     elem.actualStatus === "Under Maintenance" && (
                         <td >
-                                    <span className="  bg-blue-400 bg-opacity-30 text-blue-500 py-1 px-3 rounded-lg ">
+                                    <span className="whitespace-nowrap  bg-blue-400 bg-opacity-30 text-blue-500 py-1 px-3 rounded-lg ">
                                         {elem.actualStatus}
                                     </span>
                         </td>
@@ -49,7 +44,7 @@ const MaterialItem = (props:Props) => {
                 {
                     elem.actualStatus === "In service" && (
                         <td >
-                                    <span className="bg-teal-500 bg-opacity-30 text-teal-700 py-1 px-3 rounded-lg">
+                                    <span className=" whitespace-nowrap bg-teal-500 bg-opacity-30 text-teal-700 py-1 px-3 rounded-lg">
                                         {elem.actualStatus}
                                     </span>
                         </td>
@@ -58,7 +53,7 @@ const MaterialItem = (props:Props) => {
                 {
                     elem.actualStatus === "Out of service" && (
                         <td >
-                                    <span className="bg-red-500 bg-opacity-30 text-red-600 py-1 px-3 rounded-lg">
+                                    <span className=" whitespace-nowrap bg-red-500 bg-opacity-30 text-red-600 py-1 px-3 rounded-lg">
                                         {elem.actualStatus}
                                     </span>
                         </td>
@@ -69,8 +64,10 @@ const MaterialItem = (props:Props) => {
                 </td>
                 <td>
                     {
-                        elem.accounts ? (
-                            <AnimatedTooltip items={elem.accounts} isList={true}/>
+                        elem.accounts.length !== 0 ? (
+                            <div className="flex flex-row  justify-center w-full">
+                                <AnimatedTooltip items={elem.accounts} isList={true}/>
+                            </div>
                         ):(
                             <>
                                 no account associated
