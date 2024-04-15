@@ -23,6 +23,13 @@ export const useFetchUserByNameOrEmail = (emailOrName:string) =>{
     })
 }
 
+export const useFetchUserInfo = () =>{
+    return useQuery({
+        queryKey:['user-info'],
+        queryFn:()=> userService.getUserInfo()
+    })
+}
+
 export const useFetchAllUser =(page:number,size:number)=>{
     return useQuery({
         queryKey:['users'],

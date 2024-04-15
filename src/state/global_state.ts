@@ -1,21 +1,14 @@
 import {create,  StoreApi, UseBoundStore} from 'zustand'
+import {IAccount} from "@/app/dashboard/user/_services/definition";
 
 
 type State = {
-    profileUrl:string
-    firstName:string
-    lastName:string
-    username:string
-    userId: string
+    userInfo:IAccount
     isShowNotification:boolean
 }
 
 type Action = {
-    updateProfileUrl:(profileUrl: State['profileUrl'])=>void
-    updateFirstname:(firstName: State['firstName'])=>void
-    updateLastname:(firstName: State['lastName'])=>void
-    updateUsername:(lastname: State['username'])=>void
-    updateUserId:(lastname: State['userId'])=>void
+    updateUserInfo:(serInfo:State['userInfo'])=>void
     updateIsShowNotification:(isShowNotification: State['isShowNotification'])=>void
 }
 
@@ -34,16 +27,31 @@ const createSelectors = <S extends UseBoundStore<StoreApi<object>>>(
     return store
 }
 export const useUserStore = createSelectors(create<State & Action>((set) => ({
-    profileUrl:'',
-    lastName:'',
-    firstName:'',
-    username:'',
-    userId: '',
+    userInfo:{
+      accountId:'',
+      profileUrl:'',
+      lastname:'',
+      firstname:'',
+      email:'',
+      createdAt:new Date(),
+      roles:[
+          {
+              roleId:    '',
+              roleName:  '',
+              account:   [],
+              createdAt: new Date(),
+              updatedAt: new Date(),
+          }
+      ],
+    department:{
+        departmentId:   '',
+        departmentName: '',
+        accounts:       [],
+        createdAt:      new Date(),
+        updatedAt:      new Date()
+    }
+    },
     isShowNotification:false,
-    updateProfileUrl:(profileUrl)=> set(()=>({profileUrl: profileUrl})),
-    updateLastname:(lastName)=> set(()=>({lastName: lastName})),
-    updateFirstname:(firstName)=> set(()=>({firstName: firstName})),
-    updateUsername:(username)=> set(()=>({username: username})),
-    updateUserId:(userId)=> set(()=>({userId: userId})),
+    updateUserInfo:(userInfo)=>set(()=>({userInfo:userInfo})),
     updateIsShowNotification:(isShowNotification)=>set(()=>({isShowNotification: isShowNotification}))
 })))
