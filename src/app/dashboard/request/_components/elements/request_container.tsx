@@ -6,7 +6,7 @@ import {IRequest} from "@/app/dashboard/request/_services/definition";
 import MaterialPagination from "@/app/dashboard/material/_components/pagination/material_pagination";
 
 const RequestContainer = () => {
-    const request = useRequestStore.use.request()
+    const request:IRequest[] = useRequestStore.use.request()
     return (
         <div className="flex justify-between">
             <div className="flex flex-col space-y-4 w-[60%]">

@@ -11,6 +11,7 @@ export interface IAccount{
     profileUrl: string;
     roles:      IRole[];
     department: IDepartment;
+    createdAt: Date
 }
 export interface IRole{
     roleId:    string;

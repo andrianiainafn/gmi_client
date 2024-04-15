@@ -25,5 +25,8 @@ class UserService{
     public deleteExampleByExampleId(exampleId: string){
         return httpClient.get(EXAMPLE_ENDPOINTS.DELETE.replace("id",exampleId))
     }
+    public getUserInfo(){
+        return httpClient.get(USER_ENDPOINTS.GET_USER_INFO)
+    }
 }
 export const userService = new UserService()

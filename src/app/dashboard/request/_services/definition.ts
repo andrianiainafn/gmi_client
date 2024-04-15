@@ -1,3 +1,5 @@
+import {IAccount} from "@/app/dashboard/user/_services/definition";
+
 export interface IExampleDto{
     message: string
 }
@@ -7,7 +9,7 @@ export interface IRequest {
     materialName:  string;
     actualPriority:  string;
     requestStatus: string;
-    account:       null;
+    account:       IAccount;
     priority:      IPriority;
     createdAt:     Date;
     updatedAt:     Date;
