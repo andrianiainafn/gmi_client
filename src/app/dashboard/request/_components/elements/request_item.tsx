@@ -3,8 +3,8 @@ import UserWrapper from "@/app/dashboard/_components/user_wraper";
 import {Button} from "@/components/ui/button";
 import {Pencil} from "lucide-react";
 import {IAccount} from "@/app/dashboard/user/_services/definition";
-import {formatDistanceToNow} from "date-fns";
 import EditStatusRequestModal from "@/app/dashboard/request/_components/modal/edite_status_request_modal";
+import {formatDate} from "@/app/_common/util";
 
 interface Props{
     requestId:      string;
@@ -19,10 +19,6 @@ interface Props{
 
 const RequestItem = (props:Props) => {
     const{requestId,createdAt,description,materialName,actualPriority,requestStatus,account}=props
-    const formatDate = (apiDate:Date) => {
-        const distance = formatDistanceToNow(new Date(apiDate), { addSuffix: true, includeSeconds: true });
-        return distance.replace('about', '')
-    };
     const [isEditStatus,setIsEdit]=useState<boolean>(false)
     const HandleClickEditStatus = ()=>{
         setIsEdit(prev=>!prev)
@@ -36,7 +32,7 @@ const RequestItem = (props:Props) => {
                 }
                 <div className="flex flex-col space-y-4 shadow-sm p-2 ">
                     <div className="flex items-center justify-between">
-                        <UserWrapper profileUrl="" firstname="" role="@Assistant"/>
+                        <UserWrapper profileUrl={account.profileUrl} firstname={`${account.firstname} ${account.lastname}`} role={account.roles[0].roleName}/>
                         {
                             actualPriority === 'High' && (
                                 <div className="flex items-center text-sm space-x-2 bg-red-500 bg-opacity-30 text-red-600 py-1 px-3 rounded-full">
