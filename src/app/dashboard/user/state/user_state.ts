@@ -4,11 +4,12 @@ import {IAccount} from "@/app/dashboard/user/_services/definition";
 
 type State = {
     users:IAccount[]
-
+    selectedRole:string[]
 }
 
 type Action = {
     updateUsers:(users:State['users'])=>void
+    updateSelectedRole:(selectedRole:State['selectedRole'])=>void
 }
 
 type WithSelectors<S> = S extends { getState: () => infer T }
@@ -27,5 +28,7 @@ const createSelectors = <S extends UseBoundStore<StoreApi<object>>>(
 }
 export const useUserSectionStore = createSelectors(create<State & Action>((set) => ({
     users:[],
+    selectedRole:[],
     updateUsers:(users)=>set(()=>({users:users})),
+    updateSelectedRole:(selectedRole)=>set(()=>({selectedRole:selectedRole})),
 })))

@@ -1,15 +1,15 @@
 import {httpClient} from "@/lib/axios";
 
 import {EXAMPLE_ENDPOINTS} from "@/app/feat-exemple/_services/endpoint";
-import {IExampleDto} from "@/app/dashboard/user/_services/definition";
+import {IAccountToCreate, IExampleDto} from "@/app/dashboard/user/_services/definition";
 import {USER_ENDPOINTS} from "@/app/dashboard/user/_services/endpoint";
 
 class UserService{
-    public createExample(exampleToCreate: IExampleDto){
-        return httpClient.post(EXAMPLE_ENDPOINTS.CREATE,exampleToCreate)
+    public createAccount(user:IAccountToCreate){
+        return httpClient.post(USER_ENDPOINTS.CREATE,user)
     }
-    public getExampleByExampleId(exampleId: string){
-        return httpClient.get(EXAMPLE_ENDPOINTS.GET.replace("id",exampleId))
+    public getRoles(){
+        return httpClient.get(USER_ENDPOINTS.GET_ROLES)
     }
 
     public getAllUser(page:number,size:number){

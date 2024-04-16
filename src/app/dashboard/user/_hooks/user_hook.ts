@@ -1,14 +1,14 @@
 import {useMutation, useQuery, useQueryClient} from "react-query";
 import {exampleService} from "@/app/feat-exemple/_services/exemple_service";
-import {IExampleDto} from "@/app/dashboard/user/_services/definition";
+import {IAccountToCreate, IExampleDto} from "@/app/dashboard/user/_services/definition";
 import {userService} from "@/app/dashboard/user/_services/user_service";
 
-export  const useCreateExample= ()=>{
+export  const useCreateUser= ()=>{
     const queryClient = useQueryClient()
     return useMutation(
         {
-            mutationKey:['example'],
-            mutationFn: (exampleToCreate:IExampleDto)=> exampleService.createExample(exampleToCreate),
+            mutationKey:['create-user'],
+            mutationFn: (user:IAccountToCreate)=> userService.createAccount(user),
             onSuccess: async ()=>{
                 await queryClient.resetQueries(['example'])
                 await queryClient.invalidateQueries(['example'])
@@ -36,6 +36,14 @@ export const useFetchAllUser =(page:number,size:number)=>{
         queryFn:()=> userService.getAllUser(page,size)
     })
 }
+
+export const useFetchRoles =(page:number,size:number)=>{
+    return useQuery({
+        queryKey:['roles'],
+        queryFn:()=> userService.getRoles()
+    })
+}
+
 export const useUpdateExample=(updateId:string)=>{
     const queryClient = useQueryClient()
     return useMutation({
