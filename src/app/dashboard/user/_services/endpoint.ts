@@ -1,8 +1,8 @@
 export enum USER_ENDPOINTS{
-    CREATE = "/example",
+    CREATE = "/account",
     GET_USER_INFO="/account/info",
     GET_ALL="/account/list",
-    GET="/example/:id",
+    GET_ROLES="/role",
     UPDATE="/example/:id",
     DELETE="/example/:id",
     SEARCH="/account/email-or-name"
