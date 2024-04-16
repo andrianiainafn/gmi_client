@@ -1,8 +1,9 @@
 import {httpClient} from "@/lib/axios";
 import {IExampleDto} from '@/app/dashboard/department/_services/definition'
 import {EXAMPLE_ENDPOINTS} from "@/app/feat-exemple/_services/endpoint";
+import {DEPARTMENT_ENDPOINTS} from "@/app/dashboard/department/_services/endpoint";
 
-class ExampleService{
+class DepartmentService{
     public createExample(exampleToCreate: IExampleDto){
         return httpClient.post(EXAMPLE_ENDPOINTS.CREATE,exampleToCreate)
     }
@@ -10,8 +11,8 @@ class ExampleService{
         return httpClient.get(EXAMPLE_ENDPOINTS.GET.replace("id",exampleId))
     }
 
-    public getAllExample(){
-        return httpClient.get(EXAMPLE_ENDPOINTS.GET_ALL)
+    public getAllDepartment(){
+        return httpClient.get(DEPARTMENT_ENDPOINTS.GET_ALL)
     }
     public updateExample(exampleToUpdate: IExampleDto,id:string){
         return httpClient.put(EXAMPLE_ENDPOINTS.UPDATE.replace("id",id),exampleToUpdate)
@@ -20,4 +21,4 @@ class ExampleService{
         return httpClient.get(EXAMPLE_ENDPOINTS.DELETE.replace("id",exampleId))
     }
 }
-export const exampleService = new ExampleService()
+export const departmentService = new DepartmentService()

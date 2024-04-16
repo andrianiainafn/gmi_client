@@ -22,7 +22,7 @@ const UserContainer = () => {
         }
     }, [isSuccess]);
     return (
-        <div className="flex gap-3 items-center">
+        <div className="grid gap-2 grid-cols-3">
             {
                 isSuccess && (
                     users.map((user:IAccount,key:number)=>(

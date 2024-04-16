@@ -20,3 +20,11 @@ export interface IRole{
     createdAt: Date;
     updatedAt: Date;
 }
+export interface IAccountToCreate{
+    firstname:  string
+    lastname:   string
+    email:      string
+    password:string
+    departmentId:string
+    rolesId:string[]
+}

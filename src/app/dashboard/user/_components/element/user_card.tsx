@@ -80,7 +80,7 @@ const UserCard = (props:Props) => {
                </Button>
            </div>
             <div className="flex items-center space-x-2">
-                <Checkbox id="terms" checked={isChecked} onCheckedChange={HandleCheck}/>
+                <Checkbox id="terms" checked={userSelected.includes(user.accountId)} onCheckedChange={HandleCheck}/>
                 <label
                     htmlFor="terms"
                     className="text-sm text-gray-500 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
