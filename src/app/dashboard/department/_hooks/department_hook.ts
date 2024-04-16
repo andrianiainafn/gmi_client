@@ -1,8 +1,9 @@
 import {useMutation, useQuery, useQueryClient} from "react-query";
 import {exampleService} from "@/app/feat-exemple/_services/exemple_service";
 import {IExampleDto} from "@/app/dashboard/user/_services/definition";
+import {departmentService} from "@/app/dashboard/department/_services/department_service";
 
-export  const useCreateExample= ()=>{
+export  const useCreateDepartment= ()=>{
     const queryClient = useQueryClient()
     return useMutation(
         {
@@ -22,10 +23,10 @@ export const useFetchExampleById = (exampleId:string) =>{
     })
 }
 
-export const useFetchAllExample =()=>{
+export const useFetchDepartments =()=>{
     return useQuery({
-        queryKey:['example'],
-        queryFn:()=> exampleService.getAllExample()
+        queryKey:['departments'],
+        queryFn:()=> departmentService.getAllDepartment()
     })
 }
 export const useUpdateExample=(updateId:string)=>{
