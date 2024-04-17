@@ -21,12 +21,12 @@ export const links:ILink[] = [
     {
         label: "Materials",
         icon: <BrickWall size={24} />,
-        href:"/dashboard/material?filter=All"
+        href:"/dashboard/material?filter=All&page=0"
     },
     {
         label: "Requests",
         icon: <GitPullRequest  size={24}/>,
-        href:"/dashboard/request?priority=All"
+        href:"/dashboard/request?priority=All&page=0"
     },
     {
         label: "Reports",

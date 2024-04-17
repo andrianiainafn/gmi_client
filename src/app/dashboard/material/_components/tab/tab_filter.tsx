@@ -12,6 +12,8 @@ const TabFilter = () => {
     const[status,setStatus] = useState<IMaterialStatus[]>([])
     const filterParam = useSearchParams()
     const filter = filterParam.get('filter')
+    const pageParam = useSearchParams()
+    const page = pageParam.get('page')
     useEffect(() => {
         if(isSuccess){
             setStatus([{
@@ -29,7 +31,7 @@ const TabFilter = () => {
                     <div className='flex bg-gray-100 px-3 py-1 space-x-5  dark:bg-gray-900 items-center'>
                         {
                             status.map((elem:IMaterialStatus,key:number)=>(
-                                <TabItem statusName={elem.materialStatusName} filter={filter} key={key}/>
+                                <TabItem statusName={elem.materialStatusName} filter={filter} key={key} page={page}/>
                             ))
                         }
                     </div>
