@@ -5,11 +5,13 @@ import {IAccount} from "@/app/dashboard/user/_services/definition";
 type State = {
     userInfo:IAccount
     isShowNotification:boolean
+    isShowSetting:boolean
 }
 
 type Action = {
     updateUserInfo:(serInfo:State['userInfo'])=>void
     updateIsShowNotification:(isShowNotification: State['isShowNotification'])=>void
+    updateIsShowSetting:(isShowNotification: State['isShowNotification'])=>void
 }
 
 type WithSelectors<S> = S extends { getState: () => infer T }
@@ -52,6 +54,8 @@ export const useUserStore = createSelectors(create<State & Action>((set) => ({
     }
     },
     isShowNotification:false,
+    isShowSetting:false,
     updateUserInfo:(userInfo)=>set(()=>({userInfo:userInfo})),
-    updateIsShowNotification:(isShowNotification)=>set(()=>({isShowNotification: isShowNotification}))
+    updateIsShowNotification:(isShowNotification)=>set(()=>({isShowNotification: isShowNotification})),
+    updateIsShowSetting:(isShowSetting)=>set(()=>({isShowSetting: isShowSetting}))
 })))
