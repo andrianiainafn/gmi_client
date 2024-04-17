@@ -1,16 +1,17 @@
 "use client"
 import React, {useEffect} from 'react';
-import {useSession} from "next-auth/react";
 import { MdWavingHand } from "react-icons/md";
 import {Bell, Settings} from "lucide-react";
 import UserWrapper from "@/app/dashboard/_components/user_wraper";
 import {useUserStore} from "@/state/global_state";
 import NotificationContainer from "@/app/dashboard/(notification)/_components/notification_container";
 import {useFetchUserInfo} from "@/app/dashboard/user/_hooks/user_hook";
+import SettingModal from "@/app/_common/components/setting_modal";
 
 const DashboardNavBar = () => {
-    const session = useSession()
     const isShow = useUserStore.use.isShowNotification()
+    const isShowSetting = useUserStore.use.isShowSetting()
+    const setIsShowSetting = useUserStore.use.updateIsShowSetting()
     const setIsShow = useUserStore(state => state.updateIsShowNotification)
     const {data,isSuccess}=useFetchUserInfo()
     const userInfo = useUserStore.use.userInfo()
@@ -30,7 +31,7 @@ const DashboardNavBar = () => {
             </h2>
             <div className="flex space-x-4 items-center">
                 <Bell className={`${isShow ? 'text-teal-500': ''} hover:text-teal-500 cursor-pointer `} onClick={()=>setIsShow(!isShow)} />
-                <Settings className="hover:text-teal-500 cursor-pointer"/>
+                <Settings className={`${isShowSetting ? 'text-teal-500': ''} hover:text-teal-500 cursor-pointer `} onClick={()=>setIsShowSetting(!isShowSetting)}/>
                 {
                     isSuccess && (
                         <UserWrapper firstname={`${userInfo.firstname} ${userInfo.lastname}`} profileUrl={userInfo.profileUrl} role={userInfo.roles[0].roleName}/>
@@ -38,6 +39,7 @@ const DashboardNavBar = () => {
                 }
             </div>
             <NotificationContainer/>
+            <SettingModal/>
         </div>
     );
 };
