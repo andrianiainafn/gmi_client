@@ -29,7 +29,7 @@ const CreateUserForm = (props:Props) => {
     const updateUsers = useUserSectionStore.use.updateUsers()
     const {isSuccess,data,isLoading} = useFetchRoles(0,5)
     const {data:departmentData,isLoading:isDepartmentLoading,isSuccess:isDepartmentSuccess}= useFetchDepartments()
-    const {mutate,isSuccess:isCreateSuccess,isLoading:isCreateLoading} = useCreateUser()
+    const {mutate,data:userData,isSuccess:isCreateSuccess,isLoading:isCreateLoading} = useCreateUser()
     const [error,setError] = useState(false)
     const {
         register,
@@ -57,18 +57,17 @@ const CreateUserForm = (props:Props) => {
             roleSelected.push(roleSelectedId)
         }
         updateRoleSelected([...roleSelected])
-        console.log(roleSelected)
     }
     useEffect(() => {
         if(isCreateSuccess){
-            // const updatedRequest = [requestData?.data,...request]
-            // updateRequest(updatedRequest)
-            // console.log(updatedRequest)
+            const userUpdated  = [userData?.data,...users]
+            updateUsers([...userUpdated])
             toast({
-                title: "Create request ",
-                description: "Friday, February 10, 2023 at 5:57 PM",
+                title: "Create user ",
+                variant: 'success',
+                description: "User created successfully",
                 action: (
-                    <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
+                    <ToastAction altText="Goto users to undo">Undo</ToastAction>
                 ),
             })
         }

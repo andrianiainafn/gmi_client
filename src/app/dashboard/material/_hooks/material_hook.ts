@@ -11,7 +11,7 @@ export  const useCreateMaterial= ()=>{
             mutationFn: (material:IMaterialCreate)=> materialService.createMaterial(material),
             onSuccess: async ()=>{
                 await queryClient.resetQueries(['example'])
-                await queryClient.invalidateQueries(['example'])
+                await queryClient.invalidateQueries(['material', 'stat'])
             }
         }
     )
@@ -23,7 +23,7 @@ export const useFetchMaterialById = (materialId:string) =>{
     })
 }
 
-export const useFetchAllMaterial =(status:string,page:number,size:number)=>{
+export const useFetchAllMaterial = (status: string, page: number | null, size: number)=>{
     return useQuery({
         queryKey:['materials'],
         queryFn:()=> materialService.getAllMateriel(status,page,size)
@@ -52,7 +52,7 @@ export const useUpdateMaterial=(updateId:string)=>{
         mutationFn: (material: IEditMaterial ) => materialService.updateMaterial(material,updateId),
         onSuccess:async ()=>{
             await queryClient.invalidateQueries(['example'])
-            await queryClient.resetQueries(['example'])
+            await queryClient.invalidateQueries(['material', 'stat'])
         }
     })
 }

@@ -11,6 +11,7 @@ export  const useCreateRequest= ()=>{
             mutationKey:['request-create'],
             mutationFn: (request:IRequestToCreate)=> requestService.createRequest(request),
             onSuccess: async ()=>{
+                await queryClient.invalidateQueries(['request', 'stat'])
             }
         }
     )
