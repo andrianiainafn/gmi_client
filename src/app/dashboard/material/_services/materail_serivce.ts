@@ -1,8 +1,8 @@
 import {httpClient} from "@/lib/axios";
 import {MATERIAL_ENDPOINTS} from "@/app/dashboard/material/_services/endpoint";
-import {IEditMaterial, IMaterial, IMaterialCreate} from "@/app/dashboard/material/_services/definition";
+import {IEditMaterial, IMaterialCreate} from "@/app/dashboard/material/_services/definition";
 import {EXAMPLE_ENDPOINTS} from "@/app/feat-exemple/_services/endpoint";
-import {IAccount, IExampleDto} from "@/app/dashboard/user/_services/definition";
+import {IAccount} from "@/app/dashboard/user/_services/definition";
 
 
 class MaterialService{
@@ -16,8 +16,8 @@ class MaterialService{
     public getMaterialCount(){
         return httpClient.get(MATERIAL_ENDPOINTS.GET_PAGE_SIZE)
     }
-    public getAllMateriel(status:string,page:number,size:number){
-        return httpClient.get(`${MATERIAL_ENDPOINTS.GET_ALL}?status=${status}`)
+    public getAllMateriel(status: string, page: number | null, size: number){
+        return httpClient.get(`${MATERIAL_ENDPOINTS.GET_ALL}?status=${status}&page=${page}`)
     }
     public updateMaterial(material: IEditMaterial,id:string){
         return httpClient.put(MATERIAL_ENDPOINTS.UPDATE.replace("id",id),material)
@@ -28,10 +28,8 @@ class MaterialService{
     public toggleOwner(owner:IAccount[],newOwner:IAccount){
         if (owner.some(account => account.accountId === newOwner.accountId)){
             owner.splice(owner.indexOf(newOwner),1)
-            console.log(owner)
         }else{
             owner.push(newOwner)
-            console.log(owner)
         }
         return owner
     }
