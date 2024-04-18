@@ -6,12 +6,14 @@ type State = {
     userInfo:IAccount
     isShowNotification:boolean
     isShowSetting:boolean
+    refetchMaterial:boolean
 }
 
 type Action = {
     updateUserInfo:(serInfo:State['userInfo'])=>void
     updateIsShowNotification:(isShowNotification: State['isShowNotification'])=>void
     updateIsShowSetting:(isShowNotification: State['isShowNotification'])=>void
+    updateRefetchMaterial:(refetchMaterial: State['refetchMaterial'])=>void
 }
 
 type WithSelectors<S> = S extends { getState: () => infer T }
@@ -55,7 +57,9 @@ export const useUserStore = createSelectors(create<State & Action>((set) => ({
     },
     isShowNotification:false,
     isShowSetting:false,
+    refetchMaterial:false,
     updateUserInfo:(userInfo)=>set(()=>({userInfo:userInfo})),
     updateIsShowNotification:(isShowNotification)=>set(()=>({isShowNotification: isShowNotification})),
-    updateIsShowSetting:(isShowSetting)=>set(()=>({isShowSetting: isShowSetting}))
+    updateIsShowSetting:(isShowSetting)=>set(()=>({isShowSetting: isShowSetting})),
+    updateRefetchMaterial:(refetchMaterial)=>set(()=>({refetchMaterial: refetchMaterial}))
 })))

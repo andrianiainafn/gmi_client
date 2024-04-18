@@ -1,11 +1,11 @@
 import {httpClient} from "@/lib/axios";
-import {IExampleDto} from '@/app/dashboard/department/_services/definition'
+import {IDepartmentCreate, IExampleDto} from '@/app/dashboard/department/_services/definition'
 import {EXAMPLE_ENDPOINTS} from "@/app/feat-exemple/_services/endpoint";
 import {DEPARTMENT_ENDPOINTS} from "@/app/dashboard/department/_services/endpoint";
 
 class DepartmentService{
-    public createExample(exampleToCreate: IExampleDto){
-        return httpClient.post(EXAMPLE_ENDPOINTS.CREATE,exampleToCreate)
+    public createDepartment(departmentToCreate: IDepartmentCreate){
+        return httpClient.post(DEPARTMENT_ENDPOINTS.CREATE,departmentToCreate)
     }
     public getExampleByExampleId(exampleId: string){
         return httpClient.get(EXAMPLE_ENDPOINTS.GET.replace("id",exampleId))

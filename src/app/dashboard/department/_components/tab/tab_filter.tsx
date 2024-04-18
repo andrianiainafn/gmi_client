@@ -7,7 +7,7 @@ import Link from "next/link";
 import {useSearchParams} from "next/navigation";
 import TabItem from "@/app/dashboard/material/_components/tab/tab_item";
 
-const TabFilter = () => {
+const DepartmentTabFilter = () => {
     const{data,isLoading,isSuccess}=useFetchAllStatus()
     const[status,setStatus] = useState<IMaterialStatus[]>([])
     const filterParam = useSearchParams()
@@ -44,4 +44,4 @@ const TabFilter = () => {
     );
 };
 
-export default TabFilter;
+export default DepartmentTabFilter;

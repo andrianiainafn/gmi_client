@@ -9,3 +9,7 @@ export interface IDepartment{
     createdAt:      Date;
     updatedAt:      Date;
 }
+export interface IDepartmentCreate{
+    departmentName: string
+    userId: string[]
+}
