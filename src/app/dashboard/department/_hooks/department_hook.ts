@@ -2,13 +2,14 @@ import {useMutation, useQuery, useQueryClient} from "react-query";
 import {exampleService} from "@/app/feat-exemple/_services/exemple_service";
 import {IExampleDto} from "@/app/dashboard/user/_services/definition";
 import {departmentService} from "@/app/dashboard/department/_services/department_service";
+import {IDepartmentCreate} from "@/app/dashboard/department/_services/definition";
 
 export  const useCreateDepartment= ()=>{
     const queryClient = useQueryClient()
     return useMutation(
         {
-            mutationKey:['example'],
-            mutationFn: (exampleToCreate:IExampleDto)=> exampleService.createExample(exampleToCreate),
+            mutationKey:['create-department'],
+            mutationFn: (department:IDepartmentCreate)=> departmentService.createDepartment(department),
             onSuccess: async ()=>{
                 await queryClient.resetQueries(['example'])
                 await queryClient.invalidateQueries(['example'])
