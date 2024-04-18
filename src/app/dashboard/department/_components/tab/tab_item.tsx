@@ -11,7 +11,7 @@ interface Props{
     filter:string | null
     page:string | null
 }
-const TabItem = (props:Props) => {
+const DepartmentTabItem = (props:Props) => {
     const {filter,statusName,page}=props
     const filterParam = useSearchParams()
     const param = filterParam.get('filter')
@@ -37,4 +37,4 @@ const TabItem = (props:Props) => {
     );
 };
 
-export default TabItem;
+export default DepartmentTabItem;
