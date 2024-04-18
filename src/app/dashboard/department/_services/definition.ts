@@ -1,3 +1,5 @@
+import {IAccount} from "@/app/dashboard/user/_services/definition";
+
 export interface IExampleDto{
     message: string
 }
@@ -5,7 +7,7 @@ export interface IExampleDto{
 export interface IDepartment{
     departmentId:   string;
     departmentName: string;
-    accounts:       any[];
+    accounts:       IAccount[];
     createdAt:      Date;
     updatedAt:      Date;
 }
