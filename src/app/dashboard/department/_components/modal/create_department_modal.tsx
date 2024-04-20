@@ -9,7 +9,7 @@ interface Props{
 const CreateDepartmentModal = (props:Props) => {
     return (
         <div className="overlay" onClick={props.HandleClickCreate}>
-            <div className="central flex flex-col space-y-3 p-3" onClick={(e)=>e.preventDefault()}>
+            <div className="central flex flex-col space-y-3 p-3" onClick={(e)=>e.stopPropagation()}>
                 <ModalTitle HandleClick={props.HandleClickCreate} label="Create new Department"/>
                 <CreateDepartmentForm HandleClickCancel={props.HandleClickCreate}/>
             </div>
