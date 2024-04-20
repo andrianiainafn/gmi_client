@@ -1,13 +1,18 @@
 import {create,  StoreApi, UseBoundStore} from 'zustand'
 import {IDepartment} from "@/app/dashboard/department/_services/definition";
+import {IAccount} from "@/app/dashboard/user/_services/definition";
 
 
 type State = {
+    department:IDepartment
+    members:IAccount[]
     departments:IDepartment[]
 }
 
 type Action = {
     updateDepartments:(departments: State['departments'])=>void
+    updateDepartment:(department: State['department']) => void
+    updateMember:(members: State['members']) => void
 }
 
 type WithSelectors<S> = S extends { getState: () => infer T }
@@ -26,5 +31,15 @@ const createSelectors = <S extends UseBoundStore<StoreApi<object>>>(
 }
 export const useDepartmentStore = createSelectors(create<State & Action>((set) => ({
     departments:[],
+    members:[],
+    department:{
+        departmentName:"",
+        departmentId:"",
+        createdAt:new Date(),
+        accounts:[],
+        updatedAt: new Date()
+    },
     updateDepartments:(departments)=> set(()=>({departments: departments})),
+    updateDepartment:(department)=> set(()=>({department: department})),
+    updateMember:(members)=> set(()=>({members: members}))
 })))

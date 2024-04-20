@@ -24,8 +24,6 @@ interface IFormInput{
 }
 const EditMaterialForm = (props:Props) => {
     const{material,HandleClickCreate}=props
-    const materials = useMaterialStore.use.material()
-    const updateMaterial  = useMaterialStore.use.updateMaterial()
     const updateMaterialOwner = useMaterialStore.use.updateMaterialOwners()
     const materialOwner = useMaterialStore.use.materialOwners()
     const [newStatus,setNewStatus] = useState<string>(material.materialStatus.materialStatusId)

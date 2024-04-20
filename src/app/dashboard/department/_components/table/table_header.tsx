@@ -7,9 +7,9 @@ const TableHeader = () => {
                 <th>
                     Name
                 </th>
-                <th>
-                    Description
-                </th>
+                {/*<th>*/}
+                {/*    Description*/}
+                {/*</th>*/}
                 <th>
                     Member
                 </th>

@@ -6,19 +6,19 @@ import CreateMaterialModal from "@/app/dashboard/material/_components/modal/crea
 import CreateDepartmentModal from "@/app/dashboard/department/_components/modal/create_department_modal";
 
 const CreateDepartmentButton = () => {
-    const [isCreate,setIsCreate] = useState<boolean>(false)
-    const HandleCLickIsCreate = ()=>{
-        setIsCreate(prev=>!prev)
+    const [isCreateDepartment,setIsCreateDepartment] = useState<boolean>(false)
+    const HandleCLick = ()=>{
+        setIsCreateDepartment(prevState =>  !isCreateDepartment)
     }
     return (
         <>
             {
-                isCreate && (
-                    <CreateDepartmentModal HandleClickCreate={HandleCLickIsCreate} />
+                isCreateDepartment && (
+                    <CreateDepartmentModal HandleClickCreate={HandleCLick} />
                 )
             }
             <div className="flex justify-end">
-                <Button onClick={HandleCLickIsCreate} variant="secondary" className="flex items-center space-x-2 py-2" >
+                <Button onClick={HandleCLick} variant="secondary" className="flex items-center space-x-2 py-2" >
                     <span>Add new department</span>
                     <CirclePlus size={16} />
                 </Button>
