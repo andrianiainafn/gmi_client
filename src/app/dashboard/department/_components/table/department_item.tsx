@@ -32,9 +32,9 @@ const DepartmentItem = (props:Props) => {
                     {elem.departmentName}
                 </td>
 
-                <td>
-                    {elem.departmentName}
-                </td>
+                {/*<td>*/}
+                {/*    {elem.departmentName}*/}
+                {/*</td>*/}
                 <td>
                     {
                         elem.accounts.length !== 0 ? (
