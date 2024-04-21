@@ -5,7 +5,7 @@ import DepartmentTableContainer from "@/app/dashboard/department/_components/tab
 
 const Page = () => {
     return (
-        <div>
+        <div className="flex flex-col space-y-6">
             <DepartmentBar/>
             <CreateDepartmentButton/>
             <DepartmentTableContainer/>
