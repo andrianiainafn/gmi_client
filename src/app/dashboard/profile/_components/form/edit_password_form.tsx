@@ -37,7 +37,7 @@ const EditPasswordForm = () => {
                 <input type='password'  placeholder='Ex: Password54Strong!' {...register("confirmPassword",{required:true})}
                        className='outline-none p-2 border '  />
                 <FieldEmptyAlert error={errors.password}/>
-                <div className="flex justify-end items-center space-x-3">
+                <div className="flex mt-2 justify-end items-center space-x-3">
                     <CancelButton HandleClickCancel={()=>console.log('')}/>
                     <CreateButton label="Confirm" isLoading={false}/>
                 </div>
