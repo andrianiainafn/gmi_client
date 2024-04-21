@@ -33,11 +33,12 @@ const EditStatusRequestModal = (props:Props) => {
         }else{
             setError(true)
         }
-    }
+}
     useEffect(() => {
         if(isSuccess){
             const index = request.findIndex(objet => objet.requestId === requestId);
-            request.splice(index,index,data?.data)
+            request.splice(index, 1);
+            request.splice(index,0,data?.data)
             updateRequest([...request])
             toast({
                 title: "Change material status",
