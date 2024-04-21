@@ -6,6 +6,8 @@ import {useCreateDepartment} from "@/app/dashboard/department/_hooks/department_
 import {SubmitHandler, useForm} from "react-hook-form";
 import UserList from "@/app/dashboard/department/_components/element/user_list";
 import {useDepartmentStore} from "@/app/dashboard/department/state/department_state";
+import {ToastAction} from "@/components/ui/toast";
+import {toast} from "@/components/ui/use-toast";
 
 
 interface IFormInput{
@@ -25,7 +27,7 @@ const CreateDepartmentForm = (props:Props) => {
     const {
         register,
         handleSubmit,
-        formState:{errors,isSubmitting},
+        formState:{errors},
     } = useForm<IFormInput>()
     const onSubmit: SubmitHandler<IFormInput> = (data)=>{
         const accountId = members.map(member=>member.accountId)
@@ -36,6 +38,20 @@ const CreateDepartmentForm = (props:Props) => {
             }
         )
     }
+    useEffect(()=>{
+        if(isSuccess){
+           const updatedDepartment = [data?.data,...departments]
+            updateDepartments(updatedDepartment)
+            toast({
+                title: "Create material ",
+                description: "Material has been created successfully",
+                variant: "success",
+                action: (
+                    <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
+                ),
+            })
+        }
+    },[isSuccess])
     useEffect(() => {
         updateMembers([])
     }, []);
@@ -47,7 +63,7 @@ const CreateDepartmentForm = (props:Props) => {
                        className='outline-none p-2 border '  />
                 <FieldEmptyAlert error={errors.name}/>
                 <UserList />
-                <CreateButton label="Create material" isLoading={isCreateLoading}/>
+                <CreateButton label="Create department" isLoading={isCreateLoading}/>
                 <CancelButton HandleClickCancel={props.HandleClickCancel}/>
             </div>
         </form>
