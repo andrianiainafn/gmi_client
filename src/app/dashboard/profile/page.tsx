@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileContainer from "@/app/dashboard/profile/_components/profile_container";
+import ProfileContainer from "@/app/dashboard/profile/_components/element/profile_container";
 
 const Page = () => {
     return (

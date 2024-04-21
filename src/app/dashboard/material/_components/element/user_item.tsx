@@ -16,7 +16,6 @@ const UserItem = (props:Props) => {
     const HandleClickAdd = ()=>{
         const newMaterialOwners = materialService.toggleOwner(materialOwners,user)
         updateMaterialOwners([...newMaterialOwners])
-        console.log(materialOwners)
     }
     return (
         <div className="flex items-center relative text-sm space-x-2  bg-gray-300 bg-opacity-30  py-1 px-4 rounded-full">

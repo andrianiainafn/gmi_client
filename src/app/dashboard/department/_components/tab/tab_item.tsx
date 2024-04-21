@@ -25,9 +25,10 @@ const DepartmentTabItem = (props:Props) => {
         updateRefetchMaterial(!refetchMaterial)
     }
     useEffect( () => {
-        console.log("refetch")
         if (isSuccess) {
-            updateMaterial([...data.data])
+            if(data.data.length !== 0){
+                updateMaterial([...data.data])
+            }
         }
     }, [isSuccess,page,param,refetchMaterial]);
     return (
