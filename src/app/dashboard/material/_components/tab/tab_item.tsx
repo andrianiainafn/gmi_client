@@ -25,7 +25,6 @@ const TabItem = (props:Props) => {
         updateRefetchMaterial(!refetchMaterial)
     }
     useEffect( () => {
-        console.log("refetch")
         if (isSuccess) {
             updateMaterial([...data.data])
         }

@@ -7,7 +7,7 @@ import {useFetchAllMaterial} from "@/app/dashboard/material/_hooks/material_hook
 interface Props{
     index:number
     elem:number
-    param:string | null
+    param:string
 }
 
 const PaginationMaterialItem = (props:Props) => {
@@ -18,7 +18,7 @@ const PaginationMaterialItem = (props:Props) => {
     const page = filterParam.get('page')
     const refetchMaterial = useUserStore.use.refetchMaterial()
     const updateRefetchMaterial = useUserStore.use.updateRefetchMaterial()
-    const {refetch} = useFetchAllMaterial(param!,Number(index),5)
+    const {refetch} = useFetchAllMaterial(param,Number(index),5)
     const HandleClickPage=async(key:number)=> {
         const params = new URLSearchParams(filterParam);
         params.set('page', key.toString());

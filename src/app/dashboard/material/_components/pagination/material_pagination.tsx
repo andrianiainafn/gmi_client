@@ -5,15 +5,11 @@ import {
     PaginationContent,
     PaginationEllipsis,
     PaginationItem,
-    PaginationLink,
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination"
-import {useFetchAllMaterial, useFetchPageSize} from "@/app/dashboard/material/_hooks/material_hook";
-import {useMaterialStore} from "@/app/dashboard/material/_state/material_state";
-import {usePathname, useRouter, useSearchParams} from "next/navigation";
-import {useQueryClient} from "react-query";
-import {useUserStore} from "@/state/global_state";
+import { useFetchPageSize} from "@/app/dashboard/material/_hooks/material_hook";
+import { useSearchParams} from "next/navigation";
 import PaginationMaterialItem from "@/app/dashboard/material/_components/pagination/pagination_item";
 
 
@@ -39,7 +35,7 @@ const MaterialPagination = () => {
                         <>
                             {
                                 page.map((elem,key)=>(
-                                    <PaginationMaterialItem key={key}  index={key} elem={elem} param={param}/>
+                                    <PaginationMaterialItem key={key}  index={key} elem={elem} param={param ? param : 'All'}/>
                                 ))
                             }
                         </>

@@ -1,11 +1,14 @@
 "use client"
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useMaterialStore} from "@/app/dashboard/material/_state/material_state";
 import {IMaterial} from "@/app/dashboard/material/_services/definition";
 import MaterialItem from "@/app/dashboard/material/_components/table/material_item";
 
 const TableRow = () => {
     const material = useMaterialStore.use.material()
+    useEffect(() => {
+        console.log(material)
+    }, [material]);
     return (
         <tbody className=" ">
             {

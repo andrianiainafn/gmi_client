@@ -26,6 +26,8 @@ const EditMaterialForm = (props:Props) => {
     const{material,HandleClickCreate}=props
     const updateMaterialOwner = useMaterialStore.use.updateMaterialOwners()
     const materialOwner = useMaterialStore.use.materialOwners()
+    const materials = useMaterialStore.use.material()
+    const updateMaterials = useMaterialStore.use.updateMaterial()
     const [newStatus,setNewStatus] = useState<string>(material.materialStatus.materialStatusId)
     const [error,setError] = useState(false)
     const {data,isLoading,isSuccess,isError} = useFetchAllStatus()
@@ -62,9 +64,10 @@ const EditMaterialForm = (props:Props) => {
     }
     useEffect(()=>{
         if(isEditSuccess){
-            // const updatedMaterial = [materialData?.data,...materials]
-            // updateMaterial(updatedMaterial)
-            // console.log(updatedMaterial)
+            const index = materials.findIndex(objet => objet.materialId === material.materialId);
+            materials.splice(index, 1);
+            materials.splice(index, 0, materialData?.data);
+            updateMaterials([...materials])
             toast({
                 title: "Update material ",
                 description: "Material has been edited successfully",
