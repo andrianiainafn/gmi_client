@@ -9,6 +9,7 @@ import {
     useSpring,
 } from "framer-motion";
 import {IAccount} from "@/app/dashboard/user/_services/definition";
+import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 
 export const AnimatedTooltip = ({
                                     items,isList
@@ -73,23 +74,49 @@ export const AnimatedTooltip = ({
                     )}
                     {
                         isList ? (
-                            <Image
-                                onMouseMove={handleMouseMove}
-                                height={100}
-                                width={100}
-                                src={item.profileUrl}
-                                alt={item.firstname}
-                                className="object-cover !m-0 !p-0 object-top rounded-full h-10 w-10 border-2 group-hover:scale-105 group-hover:z-30 border-white  relative transition duration-500"
-                            />
+                            <>
+                                {
+                                    item.profileUrl ? (
+                                        <Image
+                                            onMouseMove={handleMouseMove}
+                                            height={100}
+                                            width={100}
+                                            src={item.profileUrl}
+                                            alt={item.firstname}
+                                            className="object-cover !m-0 !p-0 object-top rounded-full h-10 w-10 border-2 group-hover:scale-105 group-hover:z-30 border-white  relative transition duration-500"
+                                        />
+                                    ):(
+                                        <Avatar >
+                                            <AvatarImage src={item.profileUrl} />
+                                            <AvatarFallback className="bg-gray-400">
+                                                {item.firstname.charAt(0).toUpperCase()}
+                                            </AvatarFallback>
+                                        </Avatar>
+                                    )
+                                }
+                            </>
                         ):(
-                            <Image
-                                onMouseMove={handleMouseMove}
+                            <>
+                                {
+                                    item.profileUrl ? (
+                                    <Image
+                                    onMouseMove={handleMouseMove}
                                 height={100}
                                 width={100}
                                 src={item.profileUrl}
                                 alt={item.firstname}
                                 className="object-cover !m-0 !p-0 object-top rounded-full h-14 w-14 border-2 group-hover:scale-105 group-hover:z-30 border-white  relative transition duration-500"
                             />
+                        ):(
+                                        <Avatar className="bg-gray-400">
+                                            <AvatarImage src={item.profileUrl} />
+                                            <AvatarFallback className="bg-gray-400">
+                                                {item.firstname.charAt(0).toUpperCase()}
+                                            </AvatarFallback>
+                                        </Avatar>
+                                    )
+                                }
+                            </>
                         )
                     }
                 </div>

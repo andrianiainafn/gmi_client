@@ -7,7 +7,7 @@ import {useUserSectionStore} from "@/app/dashboard/user/state/user_state";
 
 
 const UserContainer = () => {
-    const {data,isSuccess} = useFetchAllUser(0,5)
+    const {data,isSuccess} = useFetchAllUser(0,9)
     const [selectedUser,setSelectedUser] = useState<string[]>([])
     const updateUsers = useUserSectionStore.use.updateUsers()
     const users = useUserSectionStore.use.users()

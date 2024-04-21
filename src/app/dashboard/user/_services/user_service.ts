@@ -13,7 +13,7 @@ class UserService{
     }
 
     public getAllUser(page:number,size:number){
-        return httpClient.get(USER_ENDPOINTS.GET_ALL)
+        return httpClient.get(`${USER_ENDPOINTS.GET_ALL}?size=${size}&page=${page}`)
     }
     public updateExample(exampleToUpdate: IExampleDto,id:string){
         return httpClient.put(EXAMPLE_ENDPOINTS.UPDATE.replace("id",id),exampleToUpdate)

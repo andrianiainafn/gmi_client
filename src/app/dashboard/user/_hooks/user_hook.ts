@@ -10,7 +10,7 @@ export  const useCreateUser= ()=>{
             mutationKey:['create-user'],
             mutationFn: (user:IAccountToCreate)=> userService.createAccount(user),
             onSuccess: async ()=>{
-                await queryClient.resetQueries(['example'])
+                await queryClient.resetQueries(['departments'])
                 await queryClient.invalidateQueries(['example'])
             }
         }
