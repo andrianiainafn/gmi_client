@@ -11,7 +11,7 @@ const ProfileRequestContainer = (props:Props) => {
         <div>
             {
                 props.requests.map((elem:IRequest,key:number)=>(
-                    <RequestItem requestId={elem.requestId} description={elem.description} materialName={elem.materialName} actualPriority={elem.actualPriority} requestStatus={elem.requestStatus} createdAt={elem.createdAt} account={elem.account}/>
+                    <RequestItem key={key} requestId={elem.requestId} description={elem.description} materialName={elem.materialName} actualPriority={elem.actualPriority} requestStatus={elem.requestStatus} createdAt={elem.createdAt} account={elem.account}/>
                 ))
             }
         </div>
