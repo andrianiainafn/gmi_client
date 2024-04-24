@@ -49,7 +49,7 @@ const EditPersonalInfoForm = (props:Props) => {
                 <FieldEmptyAlert error={errors.email}/>
                 <Label htmlFor="picture" className="mt-2">Picture</Label>
                 <Input id="picture" className="!cursor-pointer mt-2"  type="file" />
-                <div className="flex justify-end items-center space-x-3">
+                <div className="flex mt-2 justify-end items-center space-x-3">
                     <CancelButton HandleClickCancel={()=>console.log('')}/>
                     <CreateButton label="Confirm" isLoading={false}/>
                 </div>

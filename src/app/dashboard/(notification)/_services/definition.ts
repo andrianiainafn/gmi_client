@@ -1,3 +1,5 @@
-export interface IExampleDto{
-    message: string
+
+export interface INotificationToCreate{
+    accountConcerned: string[]
+    notificationType:string
 }
