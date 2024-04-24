@@ -1,6 +1,7 @@
 import {BrickWall, GitPullRequest, LayoutDashboard, Users} from "lucide-react";
 import { GiOrganigram } from "react-icons/gi";
 import { TbFileReport } from "react-icons/tb";
+import { SlOrganization } from "react-icons/sl";
 import {ReactNode} from "react";
 export interface ILink{
     label:string
@@ -22,6 +23,11 @@ export const links:ILink[] = [
         label: "Materials",
         icon: <BrickWall size={24} />,
         href:"/dashboard/material?filter=All&page=0"
+    },
+    {
+        label: "Organization",
+        icon: <SlOrganization size={24} />,
+        href:"/dashboard/organization/"
     },
     {
         label: "Requests",
