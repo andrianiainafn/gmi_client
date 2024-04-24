@@ -8,6 +8,7 @@ import {useRequestStore} from "@/app/dashboard/request/_state/request_state";
 import {useCreateRequest, useFetchPriority} from "@/app/dashboard/request/_hooks/request_hook";
 import {IPriority} from "@/app/dashboard/request/_services/definition";
 import FieldEmptyAlert from "@/app/_common/components/field_empty_alert";
+import {useCreateNotification} from "@/app/dashboard/(notification)/_hooks/notification_hook";
 
 interface IFormInput{
     name:string,
@@ -19,6 +20,7 @@ interface Props{
 }
 const CreateRequestFrom = (props:Props) => {
     const request = useRequestStore.use.request()
+    const {mutate:notificationMutate,isSuccess:isNotificationCreated}= useCreateNotification()
     const { toast } = useToast()
     const updateRequest  = useRequestStore.use.updateRequest()
     const {data,isLoading,isSuccess,isError} = useFetchPriority()
@@ -42,11 +44,18 @@ const CreateRequestFrom = (props:Props) => {
             const updatedRequest = [requestData?.data,...request]
             updateRequest(updatedRequest)
             console.log(updatedRequest)
+            notificationMutate(
+                {
+                    notificationType:"request",
+                    accountConcerned:[""]
+                }
+            )
             toast({
                 title: "Create request ",
-                description: "Friday, February 10, 2023 at 5:57 PM",
+                variant: "success",
+                description: "Request posted successfully",
                 action: (
-                    <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
+                    <ToastAction altText="Goto request list to undo">Undo</ToastAction>
                 ),
             })
         }
