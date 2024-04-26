@@ -1,10 +1,15 @@
 import React from 'react';
 import {X} from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import NotificationMovementContainer from "@/app/dashboard/(notification)/_components/notification_movement_container";
+import NotificationRequestContainer from "@/app/dashboard/(notification)/_components/notification_request_container";
+import NotificationReportContainer from "@/app/dashboard/(notification)/_components/notification_report_container";
+import {INotification} from "@/app/dashboard/(notification)/_services/definition";
 
 interface Props{
     HandleClickClose:(isShow:boolean)=>void,
     isShow:boolean
+    request:INotification[]
 }
 
 const NotificationBar = (props:Props) => {
@@ -30,9 +35,9 @@ const NotificationBar = (props:Props) => {
                             <TabsTrigger value="request">Request</TabsTrigger>
                             <TabsTrigger value="report">Report</TabsTrigger>
                         </TabsList>
-                        <TabsContent value="movement">Movement.</TabsContent>
-                        <TabsContent value="request">Request.</TabsContent>
-                        <TabsContent value="report">Report.</TabsContent>
+                        <NotificationMovementContainer/>
+                        <NotificationRequestContainer />
+                        <NotificationReportContainer/>
                     </Tabs>
 
                 </div>
