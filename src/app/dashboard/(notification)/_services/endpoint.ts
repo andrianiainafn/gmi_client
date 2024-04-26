@@ -1,6 +1,6 @@
 export enum NOTIFICATION_ENDPOINTS{
     CREATE = "/notification",
-    GET_ALL="/notification",
+    GET_REQUEST="/notification/request",
     GET="/example/:id",
     UPDATE="/example/:id",
     DELETE="/example/:id",

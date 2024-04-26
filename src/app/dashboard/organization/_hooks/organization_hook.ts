@@ -2,13 +2,15 @@ import {useMutation, useQuery, useQueryClient} from "react-query";
 
 import {exampleService} from "@/app/feat-exemple/_services/exemple_service";
 import {IExampleDto} from "@/app/dashboard/user/_services/definition";
+import {IOrganizationToCreate} from "@/app/dashboard/organization/_services/definition";
+import {organizationService} from "@/app/dashboard/organization/_services/organization_service";
 
-export  const useCreateExample= ()=>{
+export  const useCreateOrganization= ()=>{
     const queryClient = useQueryClient()
     return useMutation(
         {
-            mutationKey:['example'],
-            mutationFn: (exampleToCreate:IExampleDto)=> exampleService.createExample(exampleToCreate),
+            mutationKey:['organization-create'],
+            mutationFn: (organization:IOrganizationToCreate)=> organizationService.createOrganization(organization),
             onSuccess: async ()=>{
                 await queryClient.resetQueries(['example'])
                 await queryClient.invalidateQueries(['example'])
@@ -23,10 +25,10 @@ export const useFetchExampleById = (exampleId:string) =>{
     })
 }
 
-export const useFetchAllExample =()=>{
+export const useFetchAllOrganization =()=>{
     return useQuery({
-        queryKey:['example'],
-        queryFn:()=> exampleService.getAllExample()
+        queryKey:['organizations'],
+        queryFn:()=> organizationService.getOrganization()
     })
 }
 export const useUpdateExample=(updateId:string)=>{

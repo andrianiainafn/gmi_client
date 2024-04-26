@@ -13,8 +13,8 @@ class NotificationService{
         return httpClient.get(NOTIFICATION_ENDPOINTS.GET.replace("id",exampleId))
     }
 
-    public getAllNotification(){
-        return httpClient.get(NOTIFICATION_ENDPOINTS.GET_ALL)
+    public getAllNotificationRequest(){
+        return httpClient.get(NOTIFICATION_ENDPOINTS.GET_REQUEST)
     }
     public updateExample(exampleToUpdate: IExampleDto,id:string){
         return httpClient.put(NOTIFICATION_ENDPOINTS.UPDATE.replace("id",id),exampleToUpdate)
