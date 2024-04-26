@@ -1,6 +1,6 @@
 import React from 'react';
 import {X} from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs,TabsList, TabsTrigger } from "@/components/ui/tabs"
 import NotificationMovementContainer from "@/app/dashboard/(notification)/_components/notification_movement_container";
 import NotificationRequestContainer from "@/app/dashboard/(notification)/_components/notification_request_container";
 import NotificationReportContainer from "@/app/dashboard/(notification)/_components/notification_report_container";
