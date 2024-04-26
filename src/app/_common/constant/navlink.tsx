@@ -15,6 +15,24 @@ export const links:ILink[] = [
         href:"/dashboard"
     },
     {
+        label: "Requests",
+        icon: <GitPullRequest  size={24}/>,
+        href:"/dashboard/request?priority=All&page=0"
+    },
+    {
+        label: "Reports",
+        icon: <TbFileReport size={24}/>,
+        href:"/dashboard/report"
+    },
+]
+
+export const adminLinks:ILink[] =[
+    {
+        label: "Dashboard",
+        icon: <LayoutDashboard size={24} />,
+        href:"/dashboard"
+    },
+    {
         label: "Departments",
         icon: <GiOrganigram size={24}/>,
         href:"/dashboard/department"
