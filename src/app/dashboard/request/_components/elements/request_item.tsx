@@ -5,6 +5,7 @@ import {Pencil} from "lucide-react";
 import {IAccount} from "@/app/dashboard/user/_services/definition";
 import EditStatusRequestModal from "@/app/dashboard/request/_components/modal/edite_status_request_modal";
 import {formatDate} from "@/app/_common/util";
+import {useUserStore} from "@/state/global_state";
 
 interface Props{
     requestId:      string;
@@ -18,6 +19,7 @@ interface Props{
 
 
 const RequestItem = (props:Props) => {
+    const userInfo = useUserStore.use.userInfo()
     const{requestId,createdAt,description,materialName,actualPriority,requestStatus,account}=props
     const [isEditStatus,setIsEdit]=useState<boolean>(false)
     const HandleClickEditStatus = ()=>{
@@ -74,47 +76,62 @@ const RequestItem = (props:Props) => {
                         <p className="text-gray-800">
                             {description}
                         </p>
-
-                        <div className="flex space-x-2 items-center justify-end">
-                            <div className="flex space-x-2 items-center justify-start">
-                                <h3 className="">
-                                    Status:
-                                </h3>
+                        <div className="flex justify-between w-full">
+                            <div>
                                 {
-                                    requestStatus === 'PENDING' && (
-                                        <div className="flex items-center text-sm space-x-2 bg-gray-300 bg-opacity-30  py-1 px-3 rounded-full">
-                                            {/*<div className="bg-gray-300 rounded-full h-2 w-2 "/>*/}
-                                            <p>
-                                                Pending
-                                            </p>
-                                        </div>
-                                    )
-                                }
-                                {
-                                    requestStatus === 'REJECTED' && (
-                                        <div className="flex items-center text-sm space-x-2 bg-gray-300 bg-opacity-30  py-1 px-3 rounded-full">
-                                            {/*<div className="bg-gray-300 rounded-full h-2 w-2 "/>*/}
-                                            <p>
-                                                Rejected
-                                            </p>
-                                        </div>
-                                    )
-                                }
-                                {
-                                    requestStatus === 'APPROVED' && (
-                                        <div className="flex items-center text-sm space-x-2 bg-gray-300 bg-opacity-30  py-1 px-3 rounded-full">
-                                            {/*<div className="bg-gray-300 rounded-full h-2 w-2 "/>*/}
-                                            <p>
-                                                Approved
-                                            </p>
-                                        </div>
+                                    userInfo.accountId === account.accountId && (
+                                        <Button  variant="ghost" className="flex  space-x-1 items-center">
+                                            <span>Edit request</span>
+                                            <Pencil size={16}/>
+                                        </Button>
                                     )
                                 }
                             </div>
-                            <Button onClick={HandleClickEditStatus} variant="ghost" className="flex space-x-1 items-center">
-                                <span>Edit status</span>
-                                <Pencil size={16}/>
-                            </Button>
+                            <div className="flex space-x-2 items-center justify-end">
+                                <div className="flex space-x-2 items-center justify-start">
+                                    <h3 className="">
+                                        Status:
+                                    </h3>
+                                    {
+                                        requestStatus === 'PENDING' && (
+                                            <div className="flex items-center text-sm space-x-2 bg-gray-300 bg-opacity-30  py-1 px-3 rounded-full">
+                                                {/*<div className="bg-gray-300 rounded-full h-2 w-2 "/>*/}
+                                                <p>
+                                                    Pending
+                                                </p>
+                                            </div>
+                                        )
+                                    }
+                                    {
+                                        requestStatus === 'REJECTED' && (
+                                            <div className="flex items-center text-sm space-x-2 bg-gray-300 bg-opacity-30  py-1 px-3 rounded-full">
+                                                {/*<div className="bg-gray-300 rounded-full h-2 w-2 "/>*/}
+                                                <p>
+                                                    Rejected
+                                                </p>
+                                            </div>
+                                        )
+                                    }
+                                    {
+                                        requestStatus === 'APPROVED' && (
+                                            <div className="flex items-center text-sm space-x-2 bg-gray-300 bg-opacity-30  py-1 px-3 rounded-full">
+                                                {/*<div className="bg-gray-300 rounded-full h-2 w-2 "/>*/}
+                                                <p>
+                                                    Approved
+                                                </p>
+                                            </div>
+                                        )
+                                    }
+                                </div>
+                                    {
+                                        userInfo.roles[0].roleName === "Admin" && (
+                                            <Button onClick={HandleClickEditStatus} variant="ghost" className="flex  space-x-1 items-center">
+                                                <span>Edit status</span>
+                                                <Pencil size={16}/>
+                                            </Button>
+                                        )
+                                    }
+                            </div>
                         </div>
                     </div>
                 </div>
