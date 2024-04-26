@@ -9,6 +9,7 @@ import {useCreateRequest, useFetchPriority} from "@/app/dashboard/request/_hooks
 import {IPriority} from "@/app/dashboard/request/_services/definition";
 import FieldEmptyAlert from "@/app/_common/components/field_empty_alert";
 import {useCreateNotification} from "@/app/dashboard/(notification)/_hooks/notification_hook";
+import {useStompClient} from "react-stomp-hooks";
 
 interface IFormInput{
     name:string,
@@ -19,8 +20,9 @@ interface Props{
     HandleClickCancel:()=>void
 }
 const CreateRequestFrom = (props:Props) => {
+    const stompClient = useStompClient();
     const request = useRequestStore.use.request()
-    const {mutate:notificationMutate,isSuccess:isNotificationCreated}= useCreateNotification()
+    const {mutate:notificationMutate,data:notificationData,isSuccess:isNotificationCreated}= useCreateNotification()
     const { toast } = useToast()
     const updateRequest  = useRequestStore.use.updateRequest()
     const {data,isLoading,isSuccess,isError} = useFetchPriority()
@@ -39,6 +41,9 @@ const CreateRequestFrom = (props:Props) => {
             }
         )
     }
+
+
+
     useEffect(()=>{
         if(isCreateSuccess){
             const updatedRequest = [requestData?.data,...request]
@@ -60,6 +65,13 @@ const CreateRequestFrom = (props:Props) => {
             })
         }
     },[isCreateSuccess])
+    useEffect(() => {
+        if (isNotificationCreated){
+            if(stompClient) {
+                stompClient.publish({destination: '/app/broadcast', body: JSON.stringify(notificationData?.data)})
+            }
+        }
+    }, [isNotificationCreated]);
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid w-full  items-center gap-1.5 space-y-2">

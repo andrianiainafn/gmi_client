@@ -34,7 +34,7 @@ export const useFetchAllReportNotification =()=>{
 export const useFetchAllRequestNotification =()=>{
     return useQuery({
         queryKey:['request','notification'],
-        queryFn:()=> exampleService.getAllExample()
+        queryFn:()=> notificationService.getAllNotificationRequest()
     })
 }
 export const useFetchAllMovementNotification =()=>{
