@@ -7,21 +7,21 @@ import SwitchTheme from "@/app/_common/components/switch_theme";
 
 const NavBar = () => {
     return (
-        <div className="flex justify-between items-center px-6 z-20">
-            <p className="  text-4xl sm:text-5xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-8">
+        <div className=" fixed flex justify-between w-full h-[10vh] top-0 mb-10 items-center px-6 z-20 backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200 dark:border-gray-900">
+            <p className=" text-4xl sm:text-5xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-8">
                 GmI
             </p>
             <div className="text-2xl flex items-center space-x-6 ">
-                <Link href="" className="link-nav" >
+                <Link href="#why" className="link-nav" >
                     why gmi ?
                 </Link>
-                <Link href="" className="link-nav">
+                <Link href="#feature" className="link-nav">
                     Features
                 </Link>
-                <Link href="" className="link-nav">
+                <Link href="#contact" className="link-nav">
                     Contact us
                 </Link>
-                <Link href="" className="link-nav">
+                <Link href="#about" className="link-nav">
                     About us
                 </Link>
             </div>
