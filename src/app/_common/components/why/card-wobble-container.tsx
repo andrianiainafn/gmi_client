@@ -40,7 +40,7 @@ export function WobbleCardContainer() {
                         IT Hardware Management: Sign Up for Our Cutting-Edge IT Solutions
                     </h2>
                     <p className="mt-4 max-w-[26rem] text-left  text-base/6 text-neutral-200">
-                        Join us today to experience the power of modern IT asset management. Our innovative tools and expert support will empower your organization to stay ahead in today's rapidly evolving technology landscape.
+                        Join us today to experience the power of modern IT asset management. Our innovative tools and expert support will empower your organization to stay ahead in today&apos;s rapidly evolving technology landscape.
                     </p>
                 </div>
                 <Image
