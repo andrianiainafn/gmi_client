@@ -17,6 +17,8 @@ export  const useCreateNotification= ()=>{
         }
     )
 }
+
+
 export const useFetchNotificationById = (exampleId:string) =>{
     return useQuery({
         queryKey:['example'],
@@ -51,6 +53,17 @@ export const useUpdateNotification=(updateId:string)=>{
         onSuccess:async ()=>{
             await queryClient.invalidateQueries(['notification'])
             await queryClient.resetQueries(['notification'])
+        }
+    })
+}
+export const useMarkNotificationRead = ()=>{
+   const queryClient = useQueryClient()
+   return useMutation({
+        mutationKey:["notification-read"],
+        mutationFn:(notificationId:string)=>notificationService.markNotificationAsRead(notificationId),
+        onSuccess:async ()=>{
+            // await queryClient.invalidateQueries(['notification'])
+            // await queryClient.resetQueries(['notification'])
         }
     })
 }
