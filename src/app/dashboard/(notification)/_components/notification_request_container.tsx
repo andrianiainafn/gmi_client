@@ -1,46 +1,36 @@
 "use client"
-import React, {useEffect, useState} from 'react';
+import React  from 'react';
 import {TabsContent} from "@/components/ui/tabs";
-import {useFetchAllRequestNotification} from "@/app/dashboard/(notification)/_hooks/notification_hook";
+import {
+    useFetchAllRequestNotification,
+} from "@/app/dashboard/(notification)/_hooks/notification_hook";
 import {INotification} from "@/app/dashboard/(notification)/_services/definition";
-import UserWrapper from "@/app/dashboard/_components/user_wraper";
 import {useSubscription} from "react-stomp-hooks";
-import {formatDateToMdy} from "@/app/_common/util";
-import {Button} from "@/components/ui/button";
+import {useRequestStore} from "@/app/dashboard/request/_state/request_state";
+import NotificationRequestItem from "@/app/dashboard/(notification)/_components/notification_request_item";
 
 
 const NotificationRequestContainer = () => {
     const {data,isSuccess,isLoading} = useFetchAllRequestNotification()
-    const [notification, setNotification] = useState<INotification[]>([]);
-    useSubscription('/notification/public', (message) => {setNotification(prevState => [...prevState,JSON.parse(message.body)])});
-    useEffect(() => {
-        if(isSuccess){
-            setNotification(data.data)
-        }
-    }, [isSuccess]);
+    const notifications = useRequestStore.use.notifications()
+    const updateNotification = useRequestStore.use.updateNotification()
+    useSubscription('/notification/public', (message) => {
+        console.log("realtime")
+        notifications.push(JSON.parse(message.body))
+        notifications.reverse()
+        updateNotification([...notifications])
+        console.log(notifications)
+    });
+    updateNotification(data?.data)
     return (
-        <TabsContent value="request" className="space-y-2">
-            {
-                isSuccess && (
-                    notification.map((elem:INotification,key:number)=>(
-                        <div key={key} className={`flex flex-col p-2 ${elem.read ? "": "bg-teal-500 bg-opacity-10"}`}>
-                            <div className="flex justify-between">
-                                <UserWrapper profileUrl={elem.account.profileUrl} firstname={`${elem.account.lastname} ${elem.account.firstname}`} role={elem.account.roles[0].roleName}/>
-                                {
-                                    elem.read && (
-                                        <Button  variant="secondary" >
-                                            Mark as read
-                                        </Button>
-                                    )
-                                }
-                            </div>
-                            <p className="text-justify text-lg opacity-75">
-                                Awaiting your approval, {elem.account.lastname} has submitted a new equipment request on {formatDateToMdy(elem.createdAt)}
-                            </p>
-                        </div>
-                    ))
-                )
-            }
+        <TabsContent value="request" className="space-y-2 ">
+                {
+                    isSuccess && (
+                        notifications.map((elem:INotification,key:number)=>(
+                            <NotificationRequestItem key={key} account={elem.account} read={elem.read} notificationId={elem.notificationId} createdAt={elem.createdAt}/>
+                        ))
+                    )
+                }
         </TabsContent>
     );
 };

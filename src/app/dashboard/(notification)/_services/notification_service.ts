@@ -12,6 +12,9 @@ class NotificationService{
     public getExampleByExampleId(exampleId: string){
         return httpClient.get(NOTIFICATION_ENDPOINTS.GET.replace("id",exampleId))
     }
+    public markNotificationAsRead(notificationId:string){
+        return httpClient.put(NOTIFICATION_ENDPOINTS.MARK_AS_READ.replace("id",notificationId),{})
+    }
 
     public getAllNotificationRequest(){
         return httpClient.get(NOTIFICATION_ENDPOINTS.GET_REQUEST)

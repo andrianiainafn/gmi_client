@@ -6,27 +6,12 @@ import {IAccount} from "@/app/dashboard/user/_services/definition";
 type State = {
     material:IMaterial[]
     materialOwners:IAccount[]
-    materialId:     string;
-    materialName:   string;
-    serialNumber:   string;
-    description:    string;
-    actualStatus:   string;
-    state:          string;
-    createdAt:      Date;
-    updatedAt:      Date;
+
 }
 
 type Action = {
     updateMaterial:(material: State['material'])=>void
     updateMaterialOwners:(material: State['materialOwners'])=>void
-    updateMaterialId:(materialId: State['materialId'])=>void
-    updateMaterialName:(materialName: State['materialName'])=>void
-    updateSerialNumber:(serialNumber: State['serialNumber'])=>void
-    updateState:(state: State['state'])=>void
-    updateDescription:(description: State['description'])=>void
-    updateActualStatus:(actualStatus: State['actualStatus'])=>void
-    updateCreatedAt:(createdAt: State['createdAt'])=>void
-    updateUpdatedAt:(updatedAt: State['updatedAt'])=>void
 }
 
 type WithSelectors<S> = S extends { getState: () => infer T }
@@ -44,24 +29,8 @@ const createSelectors = <S extends UseBoundStore<StoreApi<object>>>(
     return store
 }
 export const useMaterialStore = createSelectors(create<State & Action>((set) => ({
-    materialId:     '',
-    materialName:   '',
-    serialNumber:   '',
-    description:    '',
-    actualStatus:   '',
-    state:          '',
-    createdAt:      new Date(),
-    updatedAt:      new Date(),
     material:[],
     materialOwners:[],
-    updateMaterialId:(materialId)=> set(()=>({materialId: materialId})),
-    updateMaterialName:(materialName)=> set(()=>({materialName: materialName})),
-    updateActualStatus:(actualStatus)=> set(()=>({actualStatus: actualStatus})),
-    updateDescription:(description)=> set(()=>({description: description})),
-    updateSerialNumber:(serialNumber)=> set(()=>({serialNumber: serialNumber})),
-    updateState:(state)=> set(()=>({state: state})),
-    updateCreatedAt:(createdAt)=> set(()=>({createdAt: createdAt})),
-    updateUpdatedAt:(updatedAt)=> set(()=>({updatedAt: updatedAt})),
     updateMaterial:(material)=> set(()=>({material: material})),
     updateMaterialOwners:(materialOwners)=> set(()=>({materialOwners: materialOwners})),
 })))

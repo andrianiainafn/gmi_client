@@ -15,14 +15,14 @@ interface Props{
 const NotificationBar = (props:Props) => {
     const{HandleClickClose,isShow}=props
     return (
-        <div className="relative bg-white">
+        <div className="relative bg-white ">
             <div className="absolute inset-x-0 top-0 z-10 flex flex-col space-y-6">
                 <div className="flex justify-between items-center">
                     <h3 className="font-semibold text-xl">Notification</h3>
                     <X  className="cursor-pointer font-semibold" onClick={()=>HandleClickClose(!isShow)}/>
                 </div>
-                <div>
-                    <Tabs defaultValue="movement" >
+                <div >
+                    <Tabs defaultValue="request" >
                         <TabsList className="flex justify-between">
                             <TabsTrigger value="movement">
                                 <div className="space-x-2">
