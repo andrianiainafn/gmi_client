@@ -5,6 +5,7 @@ import {IMaterial} from "@/app/dashboard/material/_services/definition";
 import EditMaterialModal from "@/app/dashboard/material/_components/modal/edit_material_modal";
 import {AnimatedTooltip} from "@/components/ui/animated-tooltip";
 import {formatDate} from "@/app/_common/util";
+import DeleteDialogue from "@/app/dashboard/material/_components/modal/delete_dialoge";
 
 interface Props{
     rank:number,
@@ -15,8 +16,12 @@ interface Props{
 const MaterialItem = (props:Props) => {
     const{rank,elem}=props
     const [isEdit,setIsEdit] = useState<boolean>(false)
+    const [isDelete,setIsDelete]= useState<boolean>(false)
     const HandleClickEdit = ()=>{
         setIsEdit(prev=>!prev)
+    }
+    const HandleClickDelete = ()=>{
+        setIsDelete(prevState => !prevState)
     }
     return (
         <>
@@ -95,7 +100,7 @@ const MaterialItem = (props:Props) => {
                                 </span>
                         <Pencil size={16} />
                     </Button>
-                    <Button variant="destructive" className="flex items-center space-x-2 w-[7vw]">
+                    <Button onClick={HandleClickDelete} variant="destructive" className="flex items-center space-x-2 w-[7vw]">
                                 <span>
                                     Delete
                                 </span>
@@ -103,6 +108,11 @@ const MaterialItem = (props:Props) => {
                     </Button>
                 </td>
             </tr>
+            {
+                isDelete && (
+                    <DeleteDialogue HandleClickCancel={HandleClickDelete} material={elem}/>
+                )
+            }
         </>
     );
 };

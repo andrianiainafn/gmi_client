@@ -1,7 +1,6 @@
 import {httpClient} from "@/lib/axios";
 import {MATERIAL_ENDPOINTS} from "@/app/dashboard/material/_services/endpoint";
 import {IEditMaterial, IMaterialCreate} from "@/app/dashboard/material/_services/definition";
-import {EXAMPLE_ENDPOINTS} from "@/app/feat-exemple/_services/endpoint";
 import {IAccount} from "@/app/dashboard/user/_services/definition";
 
 
@@ -23,7 +22,7 @@ class MaterialService{
         return httpClient.put(MATERIAL_ENDPOINTS.UPDATE.replace("id",id),material)
     }
     public deleteMaterialId(materialId: string){
-        return httpClient.get(EXAMPLE_ENDPOINTS.DELETE.replace("id",materialId))
+        return httpClient.delete(MATERIAL_ENDPOINTS.DELETE.replace("id",materialId))
     }
     public toggleOwner(owner:IAccount[],newOwner:IAccount){
         if (owner.some(account => account.accountId === newOwner.accountId)){
