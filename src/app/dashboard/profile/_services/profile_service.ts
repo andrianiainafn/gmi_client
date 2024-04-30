@@ -2,6 +2,7 @@ import {httpClient} from "@/lib/axios";
 import {EXAMPLE_ENDPOINTS} from "@/app/feat-exemple/_services/endpoint";
 import {IExampleDto} from "@/app/dashboard/user/_services/definition";
 import {PROFILE_ENDPOINTS} from "@/app/dashboard/profile/_services/endpoint";
+import {IEditProfile} from "@/app/dashboard/profile/_services/definition";
 
 class ProfileService{
     public createExample(exampleToCreate: IExampleDto){
@@ -14,8 +15,8 @@ class ProfileService{
     public getProfile(){
         return httpClient.get(PROFILE_ENDPOINTS.GET)
     }
-    public updateExample(exampleToUpdate: IExampleDto,id:string){
-        return httpClient.put(EXAMPLE_ENDPOINTS.UPDATE.replace("id",id),exampleToUpdate)
+    public updatePersonalInfo(profileInfo: FormData){
+        return httpClient.putFile(PROFILE_ENDPOINTS.UPDATE,profileInfo)
     }
     public deleteExampleByExampleId(exampleId: string){
         return httpClient.get(EXAMPLE_ENDPOINTS.DELETE.replace("id",exampleId))
