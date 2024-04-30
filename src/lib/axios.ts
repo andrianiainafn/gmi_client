@@ -37,6 +37,13 @@ class HttpClient {
     public patch<T>(url: string, payload: T): Promise<AxiosResponse> {
         return this.client().patch(url, payload);
     }
+    public putFile<T>(url: string, payload: T): Promise<AxiosResponse> {
+        return this.client().put(url, payload,{
+            headers:{
+                'Content-Type': 'multipart/form-data',
+            }
+        });
+    }
 
     public delete(url: string): Promise<AxiosResponse> {
         return this.client().delete(url);

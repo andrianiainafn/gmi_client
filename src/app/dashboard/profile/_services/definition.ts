@@ -6,3 +6,10 @@ export interface IProfile {
     requests:               IRequest[];
     maintenanceRequests:    null;
 }
+export interface IEditProfile {
+    firstname:string
+    lastname:string
+    password:string
+    confirmPassword:string
+    email:string
+}

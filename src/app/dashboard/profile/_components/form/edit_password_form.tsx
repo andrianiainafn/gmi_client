@@ -26,11 +26,11 @@ const EditPasswordForm = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="">
             <div className="grid w-full   gap-1.5">
                 <label htmlFor='actualPassword'>Actual password</label>
-                <input type='text'  placeholder='Ex: strongPassword54!' {...register("actualPassword",{required:true})}
+                <input type='password'  placeholder='Ex: strongPassword54!' {...register("actualPassword",{required:true})}
                        className='outline-none p-2 border '  />
                 <FieldEmptyAlert error={errors.actualPassword}/>
                 <label htmlFor='password'>New password</label>
-                <input type='text'  placeholder='Ex: Password54Strong!' {...register("password",{required:true})}
+                <input type='password'  placeholder='Ex: Password54Strong!' {...register("password",{required:true})}
                        className='outline-none p-2 border '  />
                 <FieldEmptyAlert error={errors.password}/>
                 <label htmlFor='confirmPassword'>Confirm password</label>

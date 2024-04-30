@@ -15,15 +15,15 @@ class UserService{
     public getAllUser(page:number,size:number){
         return httpClient.get(`${USER_ENDPOINTS.GET_ALL}?size=${size}&page=${page}`)
     }
-    public updateExample(exampleToUpdate: IExampleDto,id:string){
-        return httpClient.put(EXAMPLE_ENDPOINTS.UPDATE.replace("id",id),exampleToUpdate)
+    public updateUser(user: IAccountToCreate,id:string){
+        return httpClient.put(USER_ENDPOINTS.UPDATE.replace("id",id),user)
     }
     public searchUser(emailOrName:string){
         console.log(USER_ENDPOINTS.SEARCH.replace("email-or-name",emailOrName))
         return httpClient.get(USER_ENDPOINTS.SEARCH.replace("email-or-name",emailOrName))
     }
-    public deleteExampleByExampleId(exampleId: string){
-        return httpClient.get(EXAMPLE_ENDPOINTS.DELETE.replace("id",exampleId))
+    public deleteUserByUserId(userId: string){
+        return httpClient.get(USER_ENDPOINTS.DELETE.replace("id",userId))
     }
     public getUserInfo(){
         return httpClient.get(USER_ENDPOINTS.GET_USER_INFO)
