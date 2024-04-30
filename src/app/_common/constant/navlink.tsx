@@ -45,7 +45,7 @@ export const adminLinks:ILink[] =[
     {
         label: "Organization",
         icon: <SlOrganization size={24} />,
-        href:"/dashboard/organization/"
+        href:"/dashboard/organization"
     },
     {
         label: "Requests",
