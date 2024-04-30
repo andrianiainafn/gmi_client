@@ -5,6 +5,8 @@ import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 import {formatDate, formatDateToMdy} from "@/app/_common/util";
 import {Button} from "@/components/ui/button";
 import {Checkbox} from "@/components/ui/checkbox";
+import DeleteUserModal from "@/app/dashboard/user/_components/modal/delete_user_modal";
+import EditUserModal from "@/app/dashboard/user/_components/modal/edit_user_modal";
 
 interface Props{
     user:IAccount,
@@ -15,6 +17,8 @@ interface Props{
 const UserCard = (props:Props) => {
     const{user,updateUserSelected,userSelected} = props
     const [isChecked,setIsChecked] = useState<boolean>(false)
+    const [isDelete,setIsDelete] = useState<boolean>(false)
+    const [isEdit,setIsEdit] = useState<boolean>(false)
     const HandleCheck = ()=>{
         setIsChecked(prev=>!prev)
     }
@@ -26,8 +30,24 @@ const UserCard = (props:Props) => {
         }
         updateUserSelected(userSelected)
     }, [isChecked]);
+    const HandleClickDelete = ()=>{
+        setIsDelete(prevState => !prevState)
+    }
+    const HandleClickEdit=()=>{
+        setIsEdit(prevState => !prevState)
+    }
     return (
         <div className="flex flex-col space-y-4 p-4  shadow-sm border border-gray-100">
+            {
+                isDelete && (
+                    <DeleteUserModal HandleClickCancel={HandleClickDelete} user={user}/>
+                )
+            }
+            {
+                isEdit && (
+                    <EditUserModal HandleClickCreate={HandleClickEdit} user={user}/>
+                )
+            }
             <div className="flex-col items-center text-center  space-y-1 ">
                 <div className="flex justify-center">
                     <Avatar className="w-24 h-24 " >
@@ -66,13 +86,13 @@ const UserCard = (props:Props) => {
                 <p>Account created  {formatDateToMdy(user.createdAt)}</p>
             </div>
            <div className="flex justify-end space-x-2 items-center">
-               <Button  variant="secondary" className=" flex w-[7vw] items-center space-x-2" >
+               <Button onClick={HandleClickEdit} variant="secondary" className=" flex w-[7vw] items-center space-x-2" >
                             <span>
                                 Edit
                             </span>
                    <Pencil size={16} />
                </Button>
-               <Button variant="destructive" className="flex items-center space-x-2 w-[7vw]">
+               <Button onClick={HandleClickDelete} variant="destructive" className="flex items-center space-x-2 w-[7vw]">
                             <span>
                                 Delete
                             </span>

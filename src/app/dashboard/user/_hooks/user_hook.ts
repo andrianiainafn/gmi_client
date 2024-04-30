@@ -44,10 +44,10 @@ export const useFetchRoles =(page:number,size:number)=>{
     })
 }
 
-export const useUpdateExample=(updateId:string)=>{
+export const useUpdateUser=(updateId:string)=>{
     const queryClient = useQueryClient()
     return useMutation({
-        mutationFn: (example: IExampleDto ) => exampleService.updateExample(example,updateId),
+        mutationFn: (user: IAccountToCreate ) => userService.updateUser(user,updateId),
         onSuccess:async ()=>{
             await queryClient.invalidateQueries(['example'])
             await queryClient.resetQueries(['example'])
@@ -55,12 +55,12 @@ export const useUpdateExample=(updateId:string)=>{
     })
 }
 
-export const useDeleteExample = () =>{
+export const useDeleteUser = () =>{
     const queryClient = useQueryClient()
     return useMutation(
         {
             mutationKey:['delete'],
-            mutationFn:(exampleId:string)=> exampleService.deleteExampleByExampleId(exampleId),
+            mutationFn:(userId:string)=> userService.deleteUserByUserId(userId),
             onSuccess: async () =>{
                 await queryClient.invalidateQueries(['example'])
                 await queryClient.resetQueries(['example'])
