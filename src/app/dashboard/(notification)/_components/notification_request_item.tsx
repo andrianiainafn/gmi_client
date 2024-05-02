@@ -34,7 +34,7 @@ const NotificationRequestItem = (props:Props) => {
     return (
         <div  className={`flex flex-col p-2 ${read ? "": "bg-teal-500 bg-opacity-10"}`}>
             <div className="flex justify-between">
-                <UserWrapper profileUrl={account.profileUrl} firstname={`${account.lastname} ${account.firstname}`} role={account.roles[0].roleName}/>
+                <UserWrapper profileUrl={account.profileUrl} firstname={`${account.lastname} ${account.firstname}`} role={account.roles[0].roleName} providerType={account.providerType}/>
                 {
                     !read && (
                         <Button onClick={HandleClickMarkAsRead}  variant="secondary" >

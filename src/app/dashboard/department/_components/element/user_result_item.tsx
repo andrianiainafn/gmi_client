@@ -20,7 +20,7 @@ const UserResultItem = (props:Props) => {
     }
     return (
         <div className="flex items-center justify-between">
-            <UserWrapper profileUrl={account.profileUrl} firstname={account.firstname} role={account.roles[0].roleName}/>
+            <UserWrapper profileUrl={account.profileUrl} firstname={account.firstname} role={account.roles[0].roleName} providerType={account.providerType}/>
             <div  className="space-x-2 bg-gray-200 cursor-pointer p-2 flex rounded-lg" onClick={HandleClickAdd}>
                 <CirclePlus size={16} />
                 <span>Add</span>

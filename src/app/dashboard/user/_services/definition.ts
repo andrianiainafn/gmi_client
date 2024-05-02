@@ -8,6 +8,7 @@ export interface IAccount{
     firstname:  string;
     lastname:   string;
     email:      string;
+    providerType:string
     profileUrl: string;
     roles:      IRole[];
     department: IDepartment;

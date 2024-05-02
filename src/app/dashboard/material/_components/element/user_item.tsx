@@ -19,7 +19,7 @@ const UserItem = (props:Props) => {
     }
     return (
         <div className="flex items-center relative text-sm space-x-2  bg-gray-300 bg-opacity-30  py-1 px-4 rounded-full">
-            <UserWrapper profileUrl={user.profileUrl} firstname={`${user.firstname} ${user.lastname}`} role={user.roles[0].roleName}/>
+            <UserWrapper profileUrl={user.profileUrl} firstname={`${user.firstname} ${user.lastname}`} role={user.roles[0].roleName} providerType={user.providerType}/>
             <button  className="" onClick={HandleClickAdd} >
                 <CircleX size={18} />
             </button>

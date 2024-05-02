@@ -3,6 +3,7 @@ import {WobbleCardContainer} from "@/app/_common/components/why/card-wobble-cont
 import {StickyScrollReveal} from "@/app/_common/components/feature/sticky_scroll_reaveal";
 import SectionContainer from "@/app/_common/components/section_container";
 import FooterSection from "@/app/_common/components/footer/footer_section";
+import AboutSection from "@/app/_common/components/about/about_section";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
         <Hero/>
         <div className="flex flex-col space-y-7 px-6">
             <SectionContainer title={"Why Gmi ?"} section={<WobbleCardContainer/>}/>
+            <SectionContainer title="About" section={<AboutSection/>}/>
             <SectionContainer title={"Feature"} section={<StickyScrollReveal/>}/>
             <FooterSection/>
         </div>
