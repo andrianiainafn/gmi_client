@@ -49,7 +49,7 @@ const DashboardNavBar = () => {
                     <Settings className={`${isShowSetting ? 'text-teal-500': ''} hover:text-teal-500 cursor-pointer `} onClick={()=>setIsShowSetting(!isShowSetting)}/>
                     {
                         isSuccess && (
-                            <UserWrapper firstname={`${userInfo.firstname} ${userInfo.lastname}`} profileUrl={userInfo.profileUrl} role={userInfo.roles[0].roleName}/>
+                            <UserWrapper firstname={`${userInfo.firstname} ${userInfo.lastname}`} profileUrl={userInfo.profileUrl} role={userInfo.roles[0].roleName} providerType={userInfo.providerType}/>
                         )
                     }
                 </div>

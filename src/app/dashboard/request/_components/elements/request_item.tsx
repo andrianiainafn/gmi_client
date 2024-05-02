@@ -34,7 +34,7 @@ const RequestItem = (props:Props) => {
                 }
                 <div className="flex flex-col space-y-4 shadow-sm p-2 ">
                     <div className="flex items-center justify-between">
-                        <UserWrapper profileUrl={account.profileUrl} firstname={`${account.firstname} ${account.lastname}`} role={account.roles[0].roleName}/>
+                        <UserWrapper profileUrl={account.profileUrl} firstname={`${account.firstname} ${account.lastname}`} role={account.roles[0].roleName} providerType={account.providerType}/>
                         {
                             actualPriority === 'High' && (
                                 <div className="flex items-center text-sm space-x-2 bg-red-500 bg-opacity-30 text-red-600 py-1 px-3 rounded-full">

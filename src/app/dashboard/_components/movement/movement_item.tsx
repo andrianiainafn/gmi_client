@@ -6,7 +6,7 @@ const MovementItem = () => {
     return (
         <div className=" flex flex-col space-y-2 shadow-sm p-2">
             <div className="flex  items-start space-x-4">
-                <UserWrapper profileUrl="" firstname="" role="@Admin"/>
+                <UserWrapper profileUrl="" firstname="" role="@Admin" providerType={""}/>
                 <div className='bg-yellow-400 rounded-full h-3 w-3 mt-2'/>
             </div>
             <p className="text-[1em] font-light">

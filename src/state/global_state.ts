@@ -38,6 +38,7 @@ export const useUserStore = createSelectors(create<State & Action>((set) => ({
       firstname:'',
       email:'',
       createdAt:new Date(),
+      providerType:'',
       roles:[
           {
               roleId:    '',

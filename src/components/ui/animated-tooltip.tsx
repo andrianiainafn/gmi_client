@@ -33,7 +33,7 @@ export const AnimatedTooltip = ({
         const halfWidth = event.target.offsetWidth / 2;
         x.set(event.nativeEvent.offsetX - halfWidth); // set the x value, which is then used in transform and rotate
     };
-
+    const baseUrl= "http://localhost:8888"
     return (
         <>
             {items.map((item, idx) => (
@@ -77,14 +77,29 @@ export const AnimatedTooltip = ({
                             <>
                                 {
                                     item.profileUrl ? (
-                                        <Image
-                                            onMouseMove={handleMouseMove}
-                                            height={100}
-                                            width={100}
-                                            src={item.profileUrl}
-                                            alt={item.firstname}
-                                            className="object-cover !m-0 !p-0 object-top rounded-full h-10 w-10 border-2 group-hover:scale-105 group-hover:z-30 border-white  relative transition duration-500"
-                                        />
+                                        <>
+                                            {
+                                                item.providerType === 'credential' ? (
+                                                    <Image
+                                                        onMouseMove={handleMouseMove}
+                                                        height={100}
+                                                        width={100}
+                                                        src={`${baseUrl}/${item.profileUrl}`}
+                                                        alt={item.firstname}
+                                                        className="object-cover !m-0 !p-0 object-top rounded-full h-10 w-10 border-2 group-hover:scale-105 group-hover:z-30 border-white  relative transition duration-500"
+                                                    />
+                                                ):(
+                                                    <Image
+                                                        onMouseMove={handleMouseMove}
+                                                        height={100}
+                                                        width={100}
+                                                        src={item.profileUrl}
+                                                        alt={item.firstname}
+                                                        className="object-cover !m-0 !p-0 object-top rounded-full h-10 w-10 border-2 group-hover:scale-105 group-hover:z-30 border-white  relative transition duration-500"
+                                                    />
+                                                )
+                                            }
+                                        </>
                                     ):(
                                         <Avatar >
                                             <AvatarImage src={item.profileUrl} />
