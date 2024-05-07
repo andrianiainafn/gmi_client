@@ -20,7 +20,7 @@ export function WobbleCardContainer() {
                 </div>
                 <Image
                     src="/visualisation.jpg"
-                    width={500}
+                    width={600}
                     height={500}
                     alt="linear demo image"
                     className="absolute -right-4 lg:-right-[40%] grayscale filter -bottom-10 object-contain rounded-2xl"
@@ -45,8 +45,8 @@ export function WobbleCardContainer() {
                 </div>
                 <Image
                     src="/tools.jpg"
-                    width={500}
-                    height={500}
+                    width={800}
+                    height={600}
                     alt="linear demo image"
                     className="absolute -right-10 md:-right-[40%] lg:-right-[20%] -bottom-10 object-contain rounded-2xl"
                 />
