@@ -121,3 +121,29 @@ th, td {
   transform: translate(-50%,-50%);
   /* height: 40%; */
 }
+.custom-cursor{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius:  50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+a{
+  cursor: pointer;
+}
+.cursor-label{
+  padding-top:  8px;
+  font-size: 4px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  display: none;
+}
