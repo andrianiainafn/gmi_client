@@ -8,8 +8,8 @@ class OrganizationService{
     public createOrganization(organization: IOrganizationToCreate){
         return httpClient.post(ORGANIZATION_ENDPOINTS.CREATE,organization)
     }
-    public getExampleByExampleId(exampleId: string){
-        return httpClient.get(EXAMPLE_ENDPOINTS.GET.replace("id",exampleId))
+    public getRoleOfOrganization(organizationId: string){
+        return httpClient.get(ORGANIZATION_ENDPOINTS.GET_ROLE.replace("id",organizationId))
     }
 
     public getOrganization(){
