@@ -18,10 +18,10 @@ export  const useCreateOrganization= ()=>{
         }
     )
 }
-export const useFetchExampleById = (exampleId:string) =>{
+export const useFetchRoleOfOrganization = (organizationId:string) =>{
     return useQuery({
-        queryKey:['example'],
-        queryFn:()=> exampleService.getExampleByExampleId(exampleId)
+        queryKey:['role-organization'],
+        queryFn:()=> organizationService.getRoleOfOrganization(organizationId)
     })
 }
 

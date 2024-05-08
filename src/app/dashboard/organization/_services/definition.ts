@@ -6,4 +6,6 @@ export interface Organization{
     organizationId:string
     organizationLogo:string
     organizationDescription:string
+    createdAt:Date
+    updatedAt:Date
 }
