@@ -18,6 +18,21 @@ export  const useCreateOrganization= ()=>{
         }
     )
 }
+
+export  const useCreateRole= (organizationId:string)=>{
+    const queryClient = useQueryClient()
+    return useMutation(
+        {
+            mutationKey:['role-create'],
+            mutationFn: (roleName:string)=> organizationService.createRole(organizationId,roleName),
+            onSuccess: async ()=>{
+                await queryClient.resetQueries(['example'])
+                await queryClient.invalidateQueries(['example'])
+            }
+        }
+    )
+}
+
 export const useFetchRoleOfOrganization = (organizationId:string) =>{
     return useQuery({
         queryKey:['role-organization'],
@@ -31,10 +46,10 @@ export const useFetchAllOrganization =()=>{
         queryFn:()=> organizationService.getOrganization()
     })
 }
-export const useUpdateExample=(updateId:string)=>{
+export const useUpdateOrganizationName=(organizationId:string)=>{
     const queryClient = useQueryClient()
     return useMutation({
-        mutationFn: (example: IExampleDto ) => exampleService.updateExample(example,updateId),
+        mutationFn: (organizationName:string ) => organizationService.editOrganizationName(organizationId,organizationName),
         onSuccess:async ()=>{
             await queryClient.invalidateQueries(['example'])
             await queryClient.resetQueries(['example'])
