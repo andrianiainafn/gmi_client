@@ -15,9 +15,13 @@ class OrganizationService{
     public getOrganization(){
         return httpClient.get(ORGANIZATION_ENDPOINTS.GET_ALL)
     }
-    public updateExample(exampleToUpdate: IExampleDto,id:string){
-        return httpClient.put(EXAMPLE_ENDPOINTS.UPDATE.replace("id",id),exampleToUpdate)
+    public editOrganizationName(organizationId:string,organizationName:string){
+        return httpClient.put(ORGANIZATION_ENDPOINTS.UPDATE.replace("id",organizationId),{organizationName})
     }
+    public createRole(organizationId:string,roleName:string){
+        return httpClient.post(ORGANIZATION_ENDPOINTS.CREATE_ROLE.replace("id",organizationId),{roleName})
+    }
+
     public deleteExampleByExampleId(exampleId: string){
         return httpClient.get(EXAMPLE_ENDPOINTS.DELETE.replace("id",exampleId))
     }

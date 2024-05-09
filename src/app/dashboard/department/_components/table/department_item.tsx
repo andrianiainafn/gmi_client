@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import {Button} from "@/components/ui/button";
 import {CircleX, Pencil} from "lucide-react";
-import {IMaterial} from "@/app/dashboard/material/_services/definition";
-import EditMaterialModal from "@/app/dashboard/material/_components/modal/edit_material_modal";
 import {AnimatedTooltip} from "@/components/ui/animated-tooltip";
 import {formatDate} from "@/app/_common/util";
 import {IDepartment} from "@/app/dashboard/department/_services/definition";

@@ -3,6 +3,7 @@ export enum ORGANIZATION_ENDPOINTS{
     GET_ALL="/organization",
     GET="/organization/id",
     GET_ROLE="role/id",
-    UPDATE="/organization/id",
+    CREATE_ROLE="/role/id",
+    UPDATE="/organization/name/id",
     DELETE="/organization/id",
 }
