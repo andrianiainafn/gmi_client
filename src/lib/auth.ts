@@ -7,8 +7,16 @@ import {cookies} from "next/headers";
 
 
 export const handlers = NextAuth({
+    secret: process.env.NEXTAUTH_SECRET,
     providers: [
-
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID as string,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
+        }),
+        GitHubProvider({
+            clientId: process.env.GITHUB_CLIENT_ID as string,
+            clientSecret: process.env.GITHUB_CLIENT_SECRET as string
+        }),
         CredentialsProvider({
             name: 'Credentials',
             id:"credentials",
