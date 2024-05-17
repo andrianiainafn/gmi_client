@@ -32,7 +32,7 @@ export const handlers = NextAuth({
                 }
             },
             async authorize(credentials) {
-                const authResponse = await axios.post("http://localhost:8888/api/auth/login",{
+                const authResponse = await axios.post("https://gmiapi-production.up.railway.app/api/auth/login",{
                     email: credentials?.username,
                     password: credentials?.password,
                     refreshToken:"",
@@ -55,7 +55,7 @@ export const handlers = NextAuth({
     ],
     callbacks:{
         async signIn({ user, account, profile, email, credentials}){
-            const response = await axios.post("http://localhost:8888/api/auth/user",{
+            const response = await axios.post("https://gmiapi-production.up.railway.app/api",{
                 firstname:user.name,
                 email:user.email,
                 lastname:user.name,
