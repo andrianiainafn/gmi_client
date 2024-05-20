@@ -7,7 +7,6 @@ import {cookies} from "next/headers";
 
 
 export const handlers = NextAuth({
-    secret: process.env.NEXTAUTH_SECRET,
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID as string,
@@ -21,7 +20,7 @@ export const handlers = NextAuth({
             name: 'Credentials',
             id:"credentials",
             credentials:{
-                email: {
+                username: {
                     label:"email",
                     type:"text",
                     placeholder: "Type here your email"
@@ -33,8 +32,8 @@ export const handlers = NextAuth({
                 }
             },
             async authorize(credentials) {
-                const authResponse = await axios.post("https://gmiapi-production.up.railway.app/api/auth/login",{
-                    email: credentials?.email,
+                const authResponse = await axios.post("http://localhost:8888/api/auth/login",{
+                    email: credentials?.username,
                     password: credentials?.password,
                     refreshToken:"",
                     grandType: "password"
@@ -54,12 +53,9 @@ export const handlers = NextAuth({
             }
         }),
     ],
-    pages: {
-        signIn: "/login",
-    },
     callbacks:{
         async signIn({ user, account, profile, email, credentials}){
-            const response = await axios.post("https://gmiapi-production.up.railway.app/api",{
+            const response = await axios.post("http://localhost:8888/api/auth/user",{
                 firstname:user.name,
                 email:user.email,
                 lastname:user.name,
