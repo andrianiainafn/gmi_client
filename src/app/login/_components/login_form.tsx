@@ -5,6 +5,7 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {useRouter} from "next/navigation";
 import {LoginSchemaType,  SignUpSchemaType} from "@/app/login/_services/definition";
 import {Button} from "@/components/ui/button";
+import Link from "next/link";
 
 
 
@@ -30,7 +31,7 @@ const LoginForm = () => {
         }
     }
     return (
-        <form className="flex flex-col space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
+        <form className="flex flex-col space-y-3" onSubmit={form.handleSubmit(onSubmit)}>
             <div className="flex flex-col space-y-2">
                 <label>Email</label>
                 <input
@@ -44,6 +45,13 @@ const LoginForm = () => {
                     {...form.register('password')}
                     type="password" className="outline-none p-2 border"
                 />
+            </div>
+            <div className="flex justify-between">
+                <div className="flex items-center space-x-2">
+                    <input type="checkbox" className="cursor-pointer"/>
+                    <label>Remember me</label>
+                </div>
+                <Link href="">Forgot password ?</Link>
             </div>
             <Button className="bg-teal-500" >
                 Log in
