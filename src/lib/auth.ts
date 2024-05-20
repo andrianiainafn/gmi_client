@@ -21,7 +21,7 @@ export const handlers = NextAuth({
             name: 'Credentials',
             id:"credentials",
             credentials:{
-                username: {
+                email: {
                     label:"email",
                     type:"text",
                     placeholder: "Type here your email"
@@ -34,7 +34,7 @@ export const handlers = NextAuth({
             },
             async authorize(credentials) {
                 const authResponse = await axios.post("https://gmiapi-production.up.railway.app/api/auth/login",{
-                    email: credentials?.username,
+                    email: credentials?.email,
                     password: credentials?.password,
                     refreshToken:"",
                     grandType: "password"
@@ -54,6 +54,9 @@ export const handlers = NextAuth({
             }
         }),
     ],
+    pages: {
+        signIn: "/login",
+    },
     callbacks:{
         async signIn({ user, account, profile, email, credentials}){
             const response = await axios.post("https://gmiapi-production.up.railway.app/api",{
