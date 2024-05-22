@@ -1,10 +1,12 @@
 import {httpClient} from "@/lib/axios";
 import {EXAMPLE_ENDPOINTS} from "@/app/feat-exemple/_services/endpoint";
 import {IExampleDto} from "@/app/dashboard/user/_services/definition";
+import {ISigninAccount} from "@/app/signin/_services/definition";
+import {AUTH_ENDPOINTS} from "@/app/signin/_services/endpoint";
 
-class ExampleService{
-    public createExample(exampleToCreate: IExampleDto){
-        return httpClient.post(EXAMPLE_ENDPOINTS.CREATE,exampleToCreate)
+class AuthService{
+    public createAccount(account: ISigninAccount){
+        return httpClient.post(AUTH_ENDPOINTS.CREATE,account)
     }
     public getExampleByExampleId(exampleId: string){
         return httpClient.get(EXAMPLE_ENDPOINTS.GET.replace("id",exampleId))
@@ -20,4 +22,4 @@ class ExampleService{
         return httpClient.get(EXAMPLE_ENDPOINTS.DELETE.replace("id",exampleId))
     }
 }
-export const exampleService = new ExampleService()
+export const authService = new AuthService()
