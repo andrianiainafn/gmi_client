@@ -1,5 +1,5 @@
 export enum AUTH_ENDPOINTS{
-    CREATE = "/account/signin",
+    CREATE = "api/auth/signin",
     GET_ALL="/example?page=number_page?size=size_number",
     GET="/example/:id",
     UPDATE="/example/:id",
