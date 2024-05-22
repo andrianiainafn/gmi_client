@@ -14,9 +14,9 @@ export const BarListHero = ()=>{
     useEffect(() => {
         if (isSuccess) {
             setDataRequest(prevState => [
-                { name: '/pending', value:data.data.pending },
-                { name: '/approved', value: data.data.approved },
-                { name: '/rejected', value: data.data.rejected },
+                { name: '/pending', value:data.data.pending !== null ? data.data.pending : 0 },
+                { name: '/approved', value: data.data.approved !== null ? data.data.approved : 0 },
+                { name: '/rejected', value: data.data.rejected !== null ? data.data.rejected : 0  },
             ]);
         }
     }, [isSuccess]);
