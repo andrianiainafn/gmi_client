@@ -59,7 +59,7 @@ export const handlers = NextAuth({
     },
     callbacks:{
         async signIn({ user, account, profile, email, credentials}){
-            const response = await axios.post("https://gmiapi-production.up.railway.app/api/auth/user",{
+            const response = await axios.post("https://gmiapi-production.up.railway.app/api",{
                 firstname:user.name,
                 email:user.email,
                 lastname:user.name,
