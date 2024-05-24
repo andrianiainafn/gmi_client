@@ -11,7 +11,14 @@ import Link from "next/link";
 
 
 const LoginForm = () => {
-    const form = useForm<LoginSchemaType>()
+    const form = useForm<LoginSchemaType>(
+        {
+            defaultValues:{
+                email: "ethan.johnson@innovateit.com",
+                password: "secure123"
+            }
+        }
+    )
     const router = useRouter();
     const onSubmit: SubmitHandler<SignUpSchemaType> = async (data, event) => {
         const callbackUrl = "/dashboard"
