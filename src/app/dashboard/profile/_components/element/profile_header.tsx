@@ -11,7 +11,7 @@ interface Props{
 
 const ProfileHeader = (props:Props) => {
     const {avatarUrl,name,role,providerType}=props
-    const baseUrl= "http://localhost:8888"
+    const baseUrl= "https://gmiapi-production.up.railway.app"
     return (
         <div className="relative bg-teal-500 bg-opacity-65 h-[16vh] w-full">
             <div className="-bottom-10 absolute left-8 flex items-start space-x-2">
