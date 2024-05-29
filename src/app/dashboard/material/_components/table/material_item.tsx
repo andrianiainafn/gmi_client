@@ -38,7 +38,7 @@ const MaterialItem = (props:Props) => {
                     {elem.serialNumber}
                 </td>
                 {
-                    elem.actualStatus === "Under Maintenance" && (
+                    elem.actualStatus === "Under maintenance" && (
                         <td >
                                     <span className="whitespace-nowrap  bg-blue-400 bg-opacity-30 text-blue-500 py-1 px-3 rounded-lg ">
                                         {elem.actualStatus}
