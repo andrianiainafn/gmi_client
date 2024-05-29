@@ -17,10 +17,10 @@ const ProfileHeader = (props:Props) => {
             <div className="-bottom-10 absolute left-8 flex items-start space-x-2">
                 <Avatar className="w-24 h-24 " >
                     {
-                        providerType === 'credential' ? (
+                        providerType === 'credentials' ? (
                             <AvatarImage src={`${baseUrl}/${avatarUrl}`} />
                         ):(
-                            <AvatarImage src={avatarUrl} />
+                            <AvatarImage src={`${baseUrl}/${avatarUrl}`} />
                         )
                     }
                     <AvatarFallback>
