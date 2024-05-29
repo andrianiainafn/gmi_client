@@ -11,15 +11,15 @@ interface Props{
 }
 
 const UserWrapper = (props:Props) => {
-    const baseUrl= "http://localhost:8888"
+    const baseUrl= "https://gmiapi-production.up.railway.app"
     return (
         <div className="flex items-center space-x-2">
             <Avatar>
                 {
-                    props.providerType === 'credential' ? (
+                    props.providerType === 'credentials' ? (
                         <AvatarImage src={`${baseUrl}/${props.profileUrl}`} />
                     ):(
-                        <AvatarImage src={props.profileUrl} />
+                        <AvatarImage src={`${baseUrl}/${props.profileUrl}`} />
                     )
                 }
                 <AvatarFallback>
